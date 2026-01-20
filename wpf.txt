@@ -1,0 +1,19 @@
+Layout Panels
+->StackPanel ->(horizontal or vertical)
+->Grid ->(both row and col)
+->Canvas -> this allows the to use absolute like in css using the Panel.ZIndex.
+
+
+<Button -> element Content="Add customer"-> attribute/>
+
+
+properties with property elements
+
+<Button>
+<Button.Content/>
+<Button.Content/>
+.
+.
+.
+.
+</Button/>

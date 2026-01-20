@@ -4,14 +4,43 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WiredBrainApp"
+        xmlns:Controls="clr-namespace:WiredBrainApp.Controls"
+        xmlns:View="clr-namespace:WiredBrainApp.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" FontSize="20">
+        Title="Customer App" d:DesignHeight="500" d:DesignWidth="500" FontSize="20">
     <Grid>
-        <Button 
-            Name="btnCustomer"
-            Content="Add Customer" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Click="buttonAddCustomerClick"></Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Main menu -->
+
+        <Menu Grid.ColumnSpan="3">
+            <MenuItem Header="_View" >
+                <MenuItem Header="_Customers"/>
+                <MenuItem Header="_Products"/>
+            </MenuItem>
+        </Menu>
+        
+        <!-- Header -->
+        <Controls:HeaderControl Grid.Row="1" Grid.ColumnSpan="3"/>
+        
+        <!-- Customer list -->
+        <View:CustomersView Grid.Row="2" Grid.ColumnSpan="3"/>
+
+        <!-- Statusbar -->
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="3" >
+            <StatusBarItem FontSize="20" Content=" (c) Wired Brain Coffee" HorizontalAlignment="Center"/>
+        </StatusBar>
     </Grid>
 </Window>
