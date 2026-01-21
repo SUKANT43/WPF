@@ -19,17 +19,24 @@ namespace MvvmBasics
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window { 
-        CustomerViewModel vm = new CustomerViewModel();        
+        //CustomerViewModel vm = new CustomerViewModel();
+        ToDoViewModel tm = new ToDoViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = vm;
+            // DataContext = vm;
+            DataContext = tm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            vm.SaveCustomer();
+            // vm.SaveCustomer();
+            tm.AddList();
+            //foreach(var l in tm.Lst)
+            //{
+            //    MessageBox.Show(l.Content);
+            //}
         }
     }
 }

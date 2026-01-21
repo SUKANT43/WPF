@@ -54,7 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ToDoData.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\ToDoViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

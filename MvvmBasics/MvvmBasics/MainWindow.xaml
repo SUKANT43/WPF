@@ -8,14 +8,21 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel Margin="20">
         <TextBox Height="30"
-         Text="{Binding CustomerName, Mode=TwoWay }" />
+         Text="{Binding Content, Mode=TwoWay}" />
 
         <Button Height="30" Margin="0,10,0,0"
                 Content="Save"
                 Click="Button_Click"/>
 
-        <TextBlock Margin="0,10,0,0"
-                   Text="{Binding StatusMessage}" />
+        <DataGrid ItemsSource="{Binding Lst}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Content" Binding="{Binding Content}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
     </StackPanel>
 
 </Window>
