@@ -24,7 +24,7 @@ namespace MvvmBasics.ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string name = null)
+        private void OnPropertyChanged([CallerMemberName] string name = null)  //-> this actually invokes the property not the value for updating the Ui
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
