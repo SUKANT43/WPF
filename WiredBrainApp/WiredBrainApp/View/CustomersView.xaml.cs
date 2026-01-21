@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using WiredBrainApp.ViewModel;
+using WiredBrainApp.Data;
 namespace WiredBrainApp.View
 {
     /// <summary>
@@ -20,10 +21,21 @@ namespace WiredBrainApp.View
     /// </summary>
     public partial class CustomersView : UserControl
     {
+
+        private CustomersViewModel viewModel;
         public CustomersView()
         {
             InitializeComponent();
+            viewModel = new CustomersViewModel(new CustomerDataProvider());
+            DataContext = viewModel;
+            Loaded += CustomerViewLoaded;
         }
+
+        private async void CustomerViewLoaded(object s,RoutedEventArgs e)
+        {
+            await viewModel.LoadAsync();
+        }
+
         private void ButtonMoveNavigationClick(object sender, RoutedEventArgs e)
         {
             //var col = (int)customerListGrid.GetValue(Grid.ColumnProperty);

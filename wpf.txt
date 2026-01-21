@@ -17,3 +17,24 @@ properties with property elements
 .
 .
 </Button/>
+
+Binding
+<TextBox Text="{Binding ElementName=customerListView->name of the element
+, Path=SelectedItem.Content->where and what it need to take from the content, 
+Mode=TwoWay-> change occurs on two ways means the parent property, 
+UpdateSourceTrigger=PropertyChanged->chnage occurs on Onchangs}"/>
+
+Binding have three types ElementName, Source, RelativeSource
+
+
+DataContext ="Pluralsight"
+
+Text="{Binding}" binding look top of the element and check whether they have data context if yes take that one and return
+
+
+
+MVVM
+Model, View, ViewModel
+
+View-> .xaml +xaml.cs
+Model->class like CustomerClass 
