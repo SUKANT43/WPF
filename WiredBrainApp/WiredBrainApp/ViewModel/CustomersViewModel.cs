@@ -20,6 +20,7 @@ namespace WiredBrainApp.ViewModel
             this.customerDataProvider = customerDataProvider;
         }
 
+
         public async Task LoadAsync()
         {
             var customers = await customerDataProvider.GetAllAsync();
@@ -28,7 +29,7 @@ namespace WiredBrainApp.ViewModel
             {
                 Customers.Add(customer);
             }
-        }
+        }   
 
     }
 
