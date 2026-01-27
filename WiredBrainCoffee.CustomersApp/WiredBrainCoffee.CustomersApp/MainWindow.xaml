@@ -5,7 +5,109 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WiredBrainCoffee.CustomersApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Coffee Customers"
+        Height="450"
+        Width="800"
+        Background="White">
+
     <Grid>
+        <!-- Rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#F05A28" Padding="10">
+            <DockPanel LastChildFill="True">
+
+                <Image Source="/Images/logo.png"
+                       Height="60"
+                       Margin="0,0,10,0"
+                       DockPanel.Dock="Left"/>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Coffee Customers"
+                               FontSize="26"
+                               FontWeight="ExtraBold"
+                               Foreground="White"/>
+
+                    <TextBlock Text="Version 1.0"
+                               Foreground="#333333"
+                               Margin="0,2,0,0"/>
+                </StackPanel>
+
+            </DockPanel>
+        </Border>
+
+        <!-- Body -->
+        <Grid Grid.Row="1" Background="#EEEEEE">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- LEFT: Customer list -->
+            <Border Grid.Column="0"
+                    Margin="10"
+                    Background="White"
+                    CornerRadius="10"
+                    Padding="10">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Buttons -->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button Margin="0,0,10,0" Padding="10,5" Click="ButtonMove_Click">
+                            Move
+                        </Button>
+
+                        <Button Margin="0,0,10,0" Padding="10,5" Click="ButtonAddCustomer_Click">
+                            Add
+                        </Button>
+
+                        <Button Padding="10,5" Click="ButtonDeleteCustomer_Click">
+                            Delete
+                        </Button>
+                    </StackPanel>
+
+                    <!-- List -->
+                    <ListView Grid.Row="1">
+                        <ListViewItem>Thomas</ListViewItem>
+                        <ListViewItem>Julia</ListViewItem>
+                        <ListViewItem>Anna</ListViewItem>
+                    </ListView>
+                </Grid>
+            </Border>
+
+            <!-- RIGHT: Customer detail -->
+            <Border Grid.Column="1"
+                    Margin="10"
+                    Background="White"
+                    CornerRadius="10"
+                    Padding="15">
+
+                <StackPanel>
+
+                    <TextBlock Text="Customer Detail"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Firstname" FontWeight="SemiBold"/>
+                    <TextBox Margin="0,5,0,10"/>
+
+                    <TextBlock Text="Lastname" FontWeight="SemiBold"/>
+                    <TextBox Margin="0,5,0,10"/>
+
+                    <CheckBox Content="Is developer" Margin="0,10,0,0"/>
+                </StackPanel>
+            </Border>
+
+        </Grid>
     </Grid>
 </Window>

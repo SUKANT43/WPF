@@ -8,10 +8,10 @@
         Title="MainWindow" MinHeight="600" MinWidth="1100" Background="#282D33" Foreground="White" Height="869.875" Width="1006">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -32,7 +32,7 @@
          <!--DashBoards-->
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition />
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -158,7 +158,7 @@
                 FontSize="20" FontWeight="Bold" TextWrapping="Wrap"/>
 
             <TextBlock Grid.Row="1" Grid.Column="0" Margin="9"
-                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut ligula eget ante condirnentum ultrices ut ut nibh. Aliquam leo."
+                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut ligula eget ante condirnentum ultrices ut ut nibh. Aliquam leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut ligula eget ante condirnentum ultrices ut ut nibh. Aliquam leo."
                 Foreground="Gray" FontSize="15" TextWrapping="Wrap"/>
 
             <StackPanel Grid.Row="2" Grid.Column="0" Margin="9">
@@ -237,11 +237,11 @@
 
         <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Margin="9" Background="#373e46">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Text="Analytics" FontSize="20" FontWeight="Bold" Margin="10"/>
