@@ -1,56 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
+using WiredBrainCoffee.CustomersApp.DataProvider;
+using WiredBrainCoffee.CustomersApp.Model;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 namespace WiredBrainCoffee.CustomersApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private CustomerDataProvider _customerDataProvider;
+
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+            Closing += MainWindow_Closing;
+            _customerDataProvider = new CustomerDataProvider();
         }
 
-        private void ButtonMove_Click(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            int currentColumn = Grid.GetColumn(customerContainer);
+            customerListView.Items.Clear();
 
-            if (currentColumn == 0)
+            var customers = await _customerDataProvider.LoadCustomerAsync();
+            foreach (var customer in customers)
             {
-                Grid.SetColumn(customerContainer, 1);
-             
-                Grid.SetColumn(formContainer, 0);
+                customerListView.Items.Add(customer);
             }
-            else
-            {
-                Grid.SetColumn(customerContainer, 0);
-                Grid.SetColumn(formContainer, 1);
+        }
 
-            }
+        // WPF equivalent of UWP Suspending
+        private async void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            await _customerDataProvider.SaveAllCustomersAsync(
+                customerListView.Items.OfType<Customer>());
         }
 
         private void ButtonAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            var customer = new Customer { FirstName = "New" };
+            customerListView.Items.Add(customer);
+            customerListView.SelectedItem = customer;
         }
 
         private void ButtonDeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
+            var customer = customerListView.SelectedItem as Customer;
+            if (customer != null)
+            {
+                customerListView.Items.Remove(customer);
+            }
+        }
 
+        private void ButtonMove_Click(object sender, RoutedEventArgs e)
+        {
+            int column = Grid.GetColumn(customerListGrid);
+            int newColumn = column == 0 ? 2 : 0;
+            Grid.SetColumn(customerListGrid, newColumn);
+        }
+
+        private void CustomerListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            var customer = customerListView.SelectedItem as Customer;
+            customerDetailControl.Customer = customer;
         }
     }
 }

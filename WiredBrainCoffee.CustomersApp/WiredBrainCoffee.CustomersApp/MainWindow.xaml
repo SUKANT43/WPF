@@ -1,116 +1,82 @@
 ﻿<Window x:Class="WiredBrainCoffee.CustomersApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WiredBrainCoffee.CustomersApp"
-        mc:Ignorable="d"
+        xmlns:controls="clr-namespace:WiredBrainCoffee.CustomersApp.Controls"
         Title="Coffee Customers"
-        Height="450"
-        Width="800"
-        Background="White">
+        Width="600"
+        Height="400"
+        Background="#EEEEEE">
 
     <Grid>
-        <!-- Rows -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Border Grid.Row="0" Background="#F05A28" Padding="10">
-            <DockPanel LastChildFill="True" HorizontalAlignment="Center">
+        <StackPanel Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                    Background="#F05A28">
+            <Image Source="Images/logo.png"
+                   Height="90"
+                   Margin="5"/>
+            <TextBlock Text="Coffee Customers"
+                       FontSize="30"
+                       FontWeight="ExtraBold"
+                       Foreground="White"
+                       VerticalAlignment="Bottom"
+                       Margin="20"/>
+            <TextBlock Text="Version 1.0"
+                       Foreground="#333333"
+                       VerticalAlignment="Bottom"
+                       Margin="0,0,0,25"/>
+        </StackPanel>
 
-                <Image Source="C:\Users\SEZ-A4\Desktop\Wpf\WPF\WiredBrainCoffee.CustomersApp\WiredBrainCoffee.CustomersApp\Images/logo.png"
-                       Height="60"
-                       Margin="0,0,10,0"
-                       DockPanel.Dock="Left"/>
+        <!-- Customer list -->
+        <Grid Grid.Row="1"
+              x:Name="customerListGrid"
+              Background="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Coffee Customers"
-                               FontSize="26"
-                               FontWeight="ExtraBold"
-                               Foreground="White"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="10"
+                        Click="ButtonMove_Click">
+                    <TextBlock Text="Move"/>
+                </Button>
 
-                    <TextBlock Text="Version 1.0"
-                               Foreground="#333333"
-                               Margin="0,2,0,0"/>
-                </StackPanel>
-
-            </DockPanel>
-        </Border>
-
-        <!-- Body -->
-        <Grid Grid.Row="1" Background="#EEEEEE">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- LEFT: Customer list -->
-            <Border Grid.Column="0"
-                    Margin="10"
-                    Background="White"
-                    CornerRadius="10"
-                    Padding="10"
-                    x:Name="customerContainer">
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*"/>
-                        <ColumnDefinition Width="58*"/>
-                        <ColumnDefinition Width="215*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- Buttons -->
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Grid.ColumnSpan="3">
-                        <Button Margin="0,0,10,0" Padding="10,5" Click="ButtonMove_Click">
-                            Move
-                        </Button>
-
-                        <Button Margin="0,0,10,0" Padding="10,5" Click="ButtonAddCustomer_Click">
-                            Add
-                        </Button>
-
-                        <Button Padding="10,5" Click="ButtonDeleteCustomer_Click">
-                            Delete
-                        </Button>
+                <Button Margin="10"
+                        Click="ButtonAddCustomer_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Add"/>
                     </StackPanel>
+                </Button>
 
-                    <!-- List -->
-                    <ListView Grid.Row="1" Grid.ColumnSpan="3"/>
-                </Grid>
-            </Border>
+                <Button Margin="10"
+                        Click="ButtonDeleteCustomer_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Delete"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
 
-            <!-- RIGHT: Customer detail -->
-            <Border Grid.Column="1"
-                    x:Name="formContainer"
-                    Margin="10"
-                    Background="White"
-                    CornerRadius="10"
-                    Padding="15">
-
-                <StackPanel>
-
-                    <TextBlock Text="Customer Detail"
-                               FontSize="18"
-                               FontWeight="Bold"
-                               Margin="0,0,0,15"/>
-
-                    <TextBlock Text="Firstname" FontWeight="SemiBold"/>
-                    <TextBox Margin="0,5,0,10"/>
-
-                    <TextBlock Text="Lastname" FontWeight="SemiBold"/>
-                    <TextBox Margin="0,5,0,10"/>
-
-                    <CheckBox Content="Is developer" Margin="0,10,0,0"/>
-                </StackPanel>
-            </Border>
-
+            <ListView Grid.Row="1"
+                      x:Name="customerListView"
+                      DisplayMemberPath="FirstName"
+                      SelectionChanged="CustomerListView_SelectionChanged"/>
         </Grid>
+
+        <!-- Customer detail -->
+        <controls:CustomerDetailControl
+            Grid.Row="1"
+            Grid.Column="1"
+            x:Name="customerDetailControl"/>
     </Grid>
 </Window>

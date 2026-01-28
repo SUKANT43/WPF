@@ -1,30 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using WiredBrainCoffee.CustomersApp.Base;
 using WiredBrainCoffee.CustomersApp.Model;
 
 namespace WiredBrainCoffee.CustomersApp.DataProvider
 {
     class CustomerDataProvider
     {
-        static string folderPath = @"C:\Users\SEZ-A4\Desktop\Wpf\WPF";
-        static string filePath = Path.Combine(folderPath, "customers.txt");
+        private static readonly string folderPath = @"C:\Users\SEZ-A4\Desktop\Wpf\WPF";
+        private static readonly string filePath = Path.Combine(folderPath, "customers.txt");
 
         public async Task<IEnumerable<Customer>> LoadCustomerAsync()
         {
             if (!File.Exists(filePath))
-            {
                 return GetDefaultCustomers();
-            }
 
             var lines = File.ReadAllLines(filePath);
             var customers = new List<Customer>();
 
             foreach (var line in lines)
             {
-                if (string.IsNullOrWhiteSpace(line)) continue;
-
                 var parts = line.Split(',');
+                if (parts.Length != 3) continue;
 
                 customers.Add(new Customer
                 {
@@ -37,7 +37,23 @@ namespace WiredBrainCoffee.CustomersApp.DataProvider
             return customers;
         }
 
-        private List<Customer> GetDefaultCustomers()
+        public async Task SaveCustomerAsync(Customer customer)
+        {
+            Directory.CreateDirectory(folderPath);
+
+            string line = $"{customer.FirstName},{customer.LastName},{customer.IsDeveloper}";
+            File.AppendAllText(filePath, line + Environment.NewLine);
+        }
+
+        public async Task SaveAllCustomersAsync(IEnumerable<Customer> customers)
+        {
+            var lines = customers.Select(c =>
+                $"{c.FirstName},{c.LastName},{c.IsDeveloper}");
+
+            File.WriteAllLines(filePath, lines);
+        }
+
+        private IEnumerable<Customer> GetDefaultCustomers()
         {
             return new List<Customer>
             {

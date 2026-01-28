@@ -1,0 +1,17 @@
+qweret,retert,False
+qweqweet,retert,False
+werewr,retert,False
+werwerewrretret,werwerwer,False
+ewrewrewr,retert,False
+234,retert,True
+435,retert,True
+ert,ert,True
+New,345,True
+New,Customer,False
+Newret,,False
+ert,ert,False
+etet,ertret,False
+234234reergtrg,234,True
+New,,False
+New,,False
+New,,False
