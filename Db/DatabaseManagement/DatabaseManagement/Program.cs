@@ -125,7 +125,7 @@ namespace DatabaseManagement
 
 
             BooleanMsg<object> singleData =
-                db.FetchSingleData("testTable", "ProfileName", "ProfileName='sukant_2'");
+                db.FetchSingleData("testTable", "ID", "ProfileName='sukant_2'");
 
          
                 Console.WriteLine("Error: " + singleData.Value);

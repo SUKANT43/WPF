@@ -27,7 +27,20 @@ namespace WiredBrainCoffee.CustomersApp
 
         private void ButtonMove_Click(object sender, RoutedEventArgs e)
         {
+            int currentColumn = Grid.GetColumn(customerContainer);
 
+            if (currentColumn == 0)
+            {
+                Grid.SetColumn(customerContainer, 1);
+             
+                Grid.SetColumn(formContainer, 0);
+            }
+            else
+            {
+                Grid.SetColumn(customerContainer, 0);
+                Grid.SetColumn(formContainer, 1);
+
+            }
         }
 
         private void ButtonAddCustomer_Click(object sender, RoutedEventArgs e)

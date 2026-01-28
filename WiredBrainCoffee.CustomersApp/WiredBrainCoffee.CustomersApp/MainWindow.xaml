@@ -19,9 +19,9 @@
 
         <!-- Header -->
         <Border Grid.Row="0" Background="#F05A28" Padding="10">
-            <DockPanel LastChildFill="True">
+            <DockPanel LastChildFill="True" HorizontalAlignment="Center">
 
-                <Image Source="/Images/logo.png"
+                <Image Source="C:\Users\SEZ-A4\Desktop\Wpf\WPF\WiredBrainCoffee.CustomersApp\WiredBrainCoffee.CustomersApp\Images/logo.png"
                        Height="60"
                        Margin="0,0,10,0"
                        DockPanel.Dock="Left"/>
@@ -43,8 +43,8 @@
         <!-- Body -->
         <Grid Grid.Row="1" Background="#EEEEEE">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
             <!-- LEFT: Customer list -->
@@ -52,16 +52,22 @@
                     Margin="10"
                     Background="White"
                     CornerRadius="10"
-                    Padding="10">
+                    Padding="10"
+                    x:Name="customerContainer">
 
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="58*"/>
+                        <ColumnDefinition Width="215*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <!-- Buttons -->
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Grid.ColumnSpan="3">
                         <Button Margin="0,0,10,0" Padding="10,5" Click="ButtonMove_Click">
                             Move
                         </Button>
@@ -76,16 +82,13 @@
                     </StackPanel>
 
                     <!-- List -->
-                    <ListView Grid.Row="1">
-                        <ListViewItem>Thomas</ListViewItem>
-                        <ListViewItem>Julia</ListViewItem>
-                        <ListViewItem>Anna</ListViewItem>
-                    </ListView>
+                    <ListView Grid.Row="1" Grid.ColumnSpan="3"/>
                 </Grid>
             </Border>
 
             <!-- RIGHT: Customer detail -->
             <Border Grid.Column="1"
+                    x:Name="formContainer"
                     Margin="10"
                     Background="White"
                     CornerRadius="10"
