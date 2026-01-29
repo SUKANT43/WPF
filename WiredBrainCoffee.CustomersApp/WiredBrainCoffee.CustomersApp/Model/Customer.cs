@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 using WiredBrainCoffee.CustomersApp.Base;
+
 
 namespace WiredBrainCoffee.CustomersApp.Model
 {
-    public class Customer : Observable
+    public sealed partial class Customer : Observable
     {
         private string _firstName;
         private string _lastName;
@@ -51,8 +54,6 @@ namespace WiredBrainCoffee.CustomersApp.Model
                 }
             }
         }
-
-
     }
 
 }

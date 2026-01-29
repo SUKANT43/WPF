@@ -28,7 +28,6 @@ namespace WiredBrainCoffee.CustomersApp
             }
         }
 
-        // WPF equivalent of UWP Suspending
         private async void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             await _customerDataProvider.SaveAllCustomersAsync(
@@ -37,7 +36,7 @@ namespace WiredBrainCoffee.CustomersApp
 
         private void ButtonAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            var customer = new Customer { FirstName = "New" };
+            var customer = new Customer { FirstName = "" };
             customerListView.Items.Add(customer);
             customerListView.SelectedItem = customer;
         }

@@ -1,12 +1,15 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Markup;
 using WiredBrainCoffee.CustomersApp.Model;
 
 namespace WiredBrainCoffee.CustomersApp.Controls
 {
+    [ContentProperty(nameof(Customer))]
+
     public partial class CustomerDetailControl : UserControl
     {
         private Customer _customer;
-        private bool _isInternalUpdate; // prevents recursive updates
+        private bool _isInternalUpdate;
 
         public CustomerDetailControl()
         {

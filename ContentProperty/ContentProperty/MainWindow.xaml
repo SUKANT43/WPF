@@ -1,0 +1,32 @@
+﻿<Window x:Class="ContentProperty.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContentProperty"
+        xmlns:control="clr-namespace:ContentProperty.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Button Content="Add" Click="AddButton_Click"/>
+            <Button Content="Delete" Click="DeleteButton_Click"/>
+            
+            <ListBox ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <control:ValidationFormControl Grid.Column="1" DataContext="{Binding SelectedPerson}"/>
+
+
+    </Grid>
+</Window>
