@@ -2,12 +2,16 @@
 using System.Windows;
 using WiredBrainCoffee.CustomersApp.DataProvider;
 using WiredBrainCoffee.CustomersApp.Model;
+using System;
 using System.Windows.Controls;
+using WiredBrainCoffee.CustomersApp.Controls;
+
 namespace WiredBrainCoffee.CustomersApp
 {
     public partial class MainWindow : Window
     {
         private CustomerDataProvider _customerDataProvider;
+        private bool _isDarkTheme = false;
 
         public MainWindow()
         {
@@ -57,10 +61,28 @@ namespace WiredBrainCoffee.CustomersApp
             Grid.SetColumn(customerListGrid, newColumn);
         }
 
-        private void CustomerListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ToggleTheme_Click(object sender, RoutedEventArgs e)
         {
-            var customer = customerListView.SelectedItem as Customer;
-            customerDetailControl.Customer = customer;
+            var dicts = Application.Current.Resources.MergedDictionaries;
+
+            for (int i = dicts.Count - 1; i >= 0; i--)
+            {
+                if (dicts[i].Source?.OriginalString.Contains("ThemeDictionary") == true)
+                {
+                    dicts.RemoveAt(i);
+                }
+            }
+
+            dicts.Add(new ResourceDictionary
+            {
+                Source = new Uri(
+                    _isDarkTheme
+                        ? "Resources/LightThemeDictionary.xaml"
+                        : "Resources/DarkThemeDictionary.xaml",
+                    UriKind.Relative)
+            });
+
+            _isDarkTheme = !_isDarkTheme;
         }
     }
 }

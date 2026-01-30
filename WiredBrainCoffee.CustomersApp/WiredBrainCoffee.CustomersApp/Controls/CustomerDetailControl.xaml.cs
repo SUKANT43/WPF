@@ -1,14 +1,13 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Markup;
 using WiredBrainCoffee.CustomersApp.Model;
 
 namespace WiredBrainCoffee.CustomersApp.Controls
 {
     [ContentProperty(nameof(Customer))]
-
     public partial class CustomerDetailControl : UserControl
     {
-        private Customer _customer;
         private bool _isInternalUpdate;
 
         public CustomerDetailControl()
@@ -18,17 +17,31 @@ namespace WiredBrainCoffee.CustomersApp.Controls
 
         public Customer Customer
         {
-            get => _customer;
-            set
+            get { return (Customer)GetValue(CustomerProperty); }
+            set { SetValue(CustomerProperty, value); }
+        }
+        public static readonly DependencyProperty CustomerProperty =
+            DependencyProperty.Register(
+                nameof(Customer),
+                typeof(Customer),
+                typeof(CustomerDetailControl),
+                new PropertyMetadata(null, CustomerChangedCallback));
+
+        private static void CustomerChangedCallback(
+            DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            if (d is CustomerDetailControl c)
             {
-                _customer = value;
-                _isInternalUpdate = true;
+                c._isInternalUpdate = true;
 
-                txtFirstName.Text = _customer?.FirstName ?? "";
-                txtLastName.Text = _customer?.LastName ?? "";
-                chkIsDeveloper.IsChecked = _customer != null && _customer.IsDeveloper;
+                var customer = e.NewValue as Customer;
 
-                _isInternalUpdate = false;
+                c.txtFirstName.Text = customer?.FirstName ?? "";
+                c.txtLastName.Text = customer?.LastName ?? "";
+                c.chkIsDeveloper.IsChecked = customer?.IsDeveloper;
+
+                c._isInternalUpdate = false;
             }
         }
 
@@ -37,19 +50,19 @@ namespace WiredBrainCoffee.CustomersApp.Controls
             UpdateCustomer();
         }
 
-        private void CheckBox_IsCheckedChanged(object sender, System.Windows.RoutedEventArgs e)
+        private void CheckBox_IsCheckedChanged(object sender, RoutedEventArgs e)
         {
             UpdateCustomer();
         }
 
         private void UpdateCustomer()
         {
-            if (_customer == null || _isInternalUpdate)
+            if (Customer == null || _isInternalUpdate)
                 return;
 
-            _customer.FirstName = txtFirstName.Text;
-            _customer.LastName = txtLastName.Text;
-            _customer.IsDeveloper = chkIsDeveloper.IsChecked == true;
+            Customer.FirstName = txtFirstName.Text;
+            Customer.LastName = txtLastName.Text;
+            Customer.IsDeveloper = chkIsDeveloper.IsChecked == true;
         }
     }
 }

@@ -1,9 +1,22 @@
 ﻿<Application x:Class="WiredBrainCoffee.CustomersApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WiredBrainCoffee.CustomersApp"
+             xmlns:model="clr-namespace:WiredBrainCoffee.CustomersApp.Model"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
-         
+        <ResourceDictionary>
+
+            <model:Customer x:Key="customerA"
+                            FirstName="wret"
+                            LastName="C"
+                            IsDeveloper="True"/>
+
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Default theme -->
+                <ResourceDictionary Source="Resources/LightThemeDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
