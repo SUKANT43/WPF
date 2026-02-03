@@ -138,4 +138,6 @@ namespace MvvmBasics
 </Window>
 
 
+examples
+
 
