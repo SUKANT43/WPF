@@ -20,8 +20,9 @@
             <Controller:FieldController 
                 FirstName="{Binding FirstName,Mode=TwoWay}"
                 LastName="{Binding LastName,Mode=TwoWay}"/>
-            <Button  Content="Add" Width="100" Click="Button_Click"/>
-            <Button Content="Delete" Width="100" Click="Button_Click_1"/>
+            <Controller:ButtonController
+                AddCommand="{Binding AddCommand}"
+                DeleteCommand="{Binding RemoveCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

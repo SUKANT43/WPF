@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Base\RelayCommand.cs" />
+    <Compile Include="Controller\ButtonController.xaml.cs">
+      <DependentUpon>ButtonController.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controller\FieldController.xaml.cs">
       <DependentUpon>FieldController.xaml</DependentUpon>
     </Compile>
@@ -63,6 +67,10 @@
       <DependentUpon>ListController.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\NameViewModel.cs" />
+    <Page Include="Controller\ButtonController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controller\FieldController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

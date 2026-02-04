@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Counter.Controller.ButtonController"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Orientation="Horizontal">
+        <Button Content="Add"
+                Width="100"
+                Margin="5"
+                Command="{Binding AddCommand,
+                          RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
+        <Button Content="Delete"
+                Width="100"
+                Margin="5"
+                Command="{Binding DeleteCommand,
+                          RelativeSource={RelativeSource AncestorType=UserControl}}" />
+    </StackPanel>
+</UserControl>

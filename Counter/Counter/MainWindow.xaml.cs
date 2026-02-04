@@ -28,14 +28,5 @@ namespace Counter
             this.DataContext = nvm;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            nvm.Add();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            nvm.Remove();
-        }
     }
 }

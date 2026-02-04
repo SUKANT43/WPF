@@ -14,7 +14,7 @@ namespace Counter.Base
 
         public virtual void OnPropertyChanged([CallerMemberName] string property = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(property));
         }
     }
 }
