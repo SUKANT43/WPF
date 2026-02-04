@@ -19,6 +19,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        
+        
         <StackPanel Grid.ColumnSpan="3"
                     Background="#F05A28">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -57,10 +59,12 @@
         </Grid>
 
         <controls:CustomerDetailControl
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             x:Name="customerDetailControl"
             Grid.Row="1"
             Grid.Column="1"
-            Margin="17,0,17,6"
+            Margin="17,0,7,-11"
             Customer="{Binding ElementName=customerListView,Path=SelectedItem,Mode=OneWay}"/>
     </Grid>
 </Window>
