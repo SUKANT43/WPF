@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Counter.Model
 {
-    class NameModel
+    public class NameModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

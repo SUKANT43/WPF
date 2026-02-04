@@ -12,21 +12,15 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding Names}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                <Run Text="{Binding FirstName}"/>
-                <Run Text=" "/>
-                <Run Text="{Binding LastName}"/>
-                    </TextBlock>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Controller:ListController
+            Names="{Binding Names}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
+
         <StackPanel Grid.Row="1">
-            <TextBox Background="Aqua" x:Name="firstNameTextBox" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Background="Aquamarine" x:Name="lastNameTextBox" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Content="Add" Width="100" Click="Button_Click"/>
+            <Controller:FieldController 
+                FirstName="{Binding FirstName,Mode=TwoWay}"
+                LastName="{Binding LastName,Mode=TwoWay}"/>
+            <Button  Content="Add" Width="100" Click="Button_Click"/>
             <Button Content="Delete" Width="100" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
