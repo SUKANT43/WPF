@@ -51,7 +51,9 @@ namespace Counter.ViewModel
 
         public void Add()
         {
-            Names.Add(new NameModel(_firstName, _lastName));
+                Names.Add(new NameModel( _firstName,  _lastName));
+            FirstName = "";
+            LastName = "";
         }
 
         public void Remove()
