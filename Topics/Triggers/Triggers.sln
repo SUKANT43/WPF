@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 15 for Windows Desktop
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Triggers", "Triggers\Triggers.csproj", "{1E52647D-E5A8-4494-BE82-DD83A55F935A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E52647D-E5A8-4494-BE82-DD83A55F935A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E52647D-E5A8-4494-BE82-DD83A55F935A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E52647D-E5A8-4494-BE82-DD83A55F935A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E52647D-E5A8-4494-BE82-DD83A55F935A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7473BC10-7932-4041-86C0-9F88362478C2}
+	EndGlobalSection
+EndGlobal

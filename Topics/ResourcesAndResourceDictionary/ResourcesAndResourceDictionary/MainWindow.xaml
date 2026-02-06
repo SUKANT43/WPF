@@ -13,7 +13,7 @@
             <Setter Property="Foreground" Value="White"/>
         </Style>
     </Window.Resources>-->
-    <Grid Background="{StaticResource PrimaryBrush}" >
+    <Grid Background="{DynamicResource PrimaryBrush}" >
         <TextBlock Style="{StaticResource CustomTextBlock}" Width="100" Height="100"/>
         <Button Width="150"
         Height="40"

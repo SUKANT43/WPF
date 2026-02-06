@@ -3,8 +3,8 @@
 
     <Color x:Key="PrimaryColor">#FF2196F3</Color>
 
-    <SolidColorBrush x:Key="PrimaryBrush"
-                     Color="{StaticResource PrimaryColor}" />
+    <!--<SolidColorBrush x:Key="PrimaryBrush"
+                     Color="{StaticResource PrimaryColor}" />-->
 
     <Style x:Key="DangerButtonStyle"
            TargetType="Button">
