@@ -1,5 +1,4 @@
-﻿using AttachProperty.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AttachProperty
+namespace LayoutsAndControls
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -24,10 +23,6 @@ namespace AttachProperty
         public MainWindow()
         {
             InitializeComponent();
-            bool h = HighlightHelper.GetIsHighlighted(bt2);
-            bool h2 = HighlightHelper.GetIsHighlighted(bt3);
-
-            MessageBox.Show(h2.ToString());
         }
     }
 }

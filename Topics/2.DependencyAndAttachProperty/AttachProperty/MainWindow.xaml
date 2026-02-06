@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttachProperty.Helpers"
+        xmlns:controller="clr-namespace:AttachProperty.Controllers"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -12,5 +13,11 @@
             <Button Content="Not Highlighted" x:Name="bt2" local:HighlightHelper.IsHighlighted="False"/>
             <Button Content="Not Highlighted" x:Name="bt3"/>
         </StackPanel>
+
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+            <TextBox Width="100" Background="Aquamarine" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <controller:TextBox Text="{Binding Text , Mode=TwoWay}"/>
+        </StackPanel>
+        
     </Grid>
 </Window>
