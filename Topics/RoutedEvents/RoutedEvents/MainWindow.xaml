@@ -6,14 +6,19 @@
         xmlns:local="clr-namespace:RoutedEvents"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Button.Click="Bubbling_Panel_Click" Width="100" Height="50" VerticalAlignment="Top">
+            <Button Click="Bubbling_Button_Click" Content="Bubbling Event"/>
+        </StackPanel>
 
-    <StackPanel PreviewMouseDown="Panel_PreviewMouseDown"
-                MouseDown="Panel_MouseDown">
 
-        <Button Content="Click Me"
-                PreviewMouseDown="Button_PreviewMouseDown"
-                MouseDown="Button_MouseDown"
-                Loaded="Button_Loaded"/>
+        <StackPanel PreviewMouseDown="Tunneling_Panel_Mouse_Down" Width="100" Height="50" VerticalAlignment="Center">
+            <Button Content="Tunneling Event" PreviewMouseDown="Tunneling_Button_Mouse_Down"/>
+        </StackPanel>
 
-    </StackPanel>
+        <StackPanel Width="100" Height="50" VerticalAlignment="Bottom">
+            <TextBox TextChanged="Direct_Text_Changed"/>
+        </StackPanel>
+        
+    </Grid>
 </Window>

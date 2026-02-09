@@ -25,41 +25,29 @@ namespace RoutedEvents
             InitializeComponent();
         }
 
-        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Bubbling_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("PreviewMouseDown → Window");
+            MessageBox.Show("button clicked");
         }
 
-        private void Panel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Bubbling_Panel_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("PreviewMouseDown → StackPanel");
+            MessageBox.Show("panel clicked");
         }
 
-        private void Button_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Tunneling_Panel_Mouse_Down(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("PreviewMouseDown → Button");
+            MessageBox.Show("panel mouse down");
         }
 
-        // -------- BUBBLING EVENTS --------
-        private void Button_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Tunneling_Button_Mouse_Down(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("MouseDown → Button");
+            MessageBox.Show("button mouse down");
         }
 
-        private void Panel_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Direct_Text_Changed(object sender, TextChangedEventArgs e)
         {
-            MessageBox.Show("MouseDown → StackPanel");
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("MouseDown → Window");
-        }
-
-        // -------- DIRECT EVENT --------
-        private void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Loaded → Button (Direct Event)");
+            MessageBox.Show("Text only changed");
         }
     }
 }

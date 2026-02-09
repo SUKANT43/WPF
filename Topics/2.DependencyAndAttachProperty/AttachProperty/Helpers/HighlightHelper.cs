@@ -33,12 +33,24 @@ namespace AttachProperty.Helpers
 
         private static void OnIsHighlightedChanged(DependencyObject d, 
             DependencyPropertyChangedEventArgs e)
+
         {
             if(d is Control control)
             {
                 bool isHighlighted = (bool)e.NewValue;
                 control.Background = isHighlighted ? Brushes.Gold : Brushes.Blue;
             }
+            else if(d is Button button)
+            {
+                bool isHighlighted = (bool)e.NewValue;
+                button.Background = isHighlighted ? Brushes.Gold : Brushes.Blue;
+            }
+            else if(d is ListView ls)
+            {
+                bool isHighlighted = (bool)e.NewValue;
+                ls.Background = isHighlighted ? Brushes.Gold : Brushes.Blue;
+            }
+
         }
     }
 }

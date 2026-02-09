@@ -17,6 +17,7 @@
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
             <TextBox Width="100" Background="Aquamarine" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <controller:TextBox Text="{Binding Text , Mode=TwoWay}"/>
+            <TextBlock local:HighlightHelper.IsHighlighted="True" Text="{Binding Text}"/>
         </StackPanel>
         
     </Grid>
