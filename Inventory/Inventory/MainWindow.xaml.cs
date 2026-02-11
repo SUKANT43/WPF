@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventory.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,30 +14,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RunTimeControls
+namespace Inventory
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        public object CurrentView { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void BtnOk_Click(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < 100; i++)
-            {
-                TextBlock tb = new TextBlock()
-                {
-                    Text = txtInput.Text,
-                    FontSize = 16,
-                    Margin = new Thickness(10, 10, 10, 10)
-                };
-                TextContainer.Children.Add(tb);
-            }
+            DataContext = this;
+            CurrentView = new InventoryView();
         }
     }
 }

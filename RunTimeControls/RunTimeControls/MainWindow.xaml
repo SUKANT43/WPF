@@ -14,7 +14,7 @@
             Margin="0,10,0,10"/>
 
         <!-- This panel will hold all TextBlocks -->
-        <WrapPanel x:Name="TextContainer"/>
+        <WrapPanel x:Name="TextContainer" />
     </StackPanel>
 
 </Window>

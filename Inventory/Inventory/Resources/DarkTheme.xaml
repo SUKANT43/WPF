@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Inventory.Resources">
+
+    <SolidColorBrush x:Key="AppBackground" Color="#0F172A"/>
+    <SolidColorBrush x:Key="CardBackground" Color="#1E293B"/>
+    <SolidColorBrush x:Key="BorderColor" Color="#334155"/>
+
+    <SolidColorBrush x:Key="PrimaryTextColor" Color="#F1F5F9"/>
+    <SolidColorBrush x:Key="SecondaryTextColor" Color="#94A3B8"/>
+
+    <SolidColorBrush x:Key="PrimaryAccentColor" Color="#3B82F6"/>
+    <SolidColorBrush x:Key="HoverAccentColor" Color="#2563EB"/>
+
+    <BitmapImage x:Key="ThemeImage"
+             UriSource="C:\Users\SEZ-A4\Desktop\Wpf\WPF\Inventory\Inventory\Images\light.png"/>
+
+</ResourceDictionary>

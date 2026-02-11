@@ -1,0 +1,29 @@
+﻿<Window x:Class="StylesTemplatesAndAnimations.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StylesTemplatesAndAnimations"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Margin="20">
+        <Button Content="Animate All"
+            Click="AnimateAll_Click"
+            Width="140"/>
+
+        <TextBlock x:Name="DemoText"
+               Text="WPF Animations"
+               FontSize="24"
+               Background="LightGray"
+               Margin="0,20,0,0"
+               HorizontalAlignment="Left">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform x:Name="translate"/>
+                    <ScaleTransform x:Name="scale" ScaleX="1" ScaleY="1"/>
+                    <RotateTransform x:Name="rotate" Angle="0"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+    </StackPanel>
+</Window>
