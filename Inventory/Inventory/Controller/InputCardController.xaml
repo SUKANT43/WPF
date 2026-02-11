@@ -37,6 +37,7 @@
                        Margin="0,5"/>
         <TextBox Grid.Row="1"
                      Grid.Column="1"
+                     Text="{Binding ProductName,UpdateSourceTrigger=PropertyChanged}"
                      Height="30"
                      Margin="0,5"/>
 
@@ -47,6 +48,7 @@
                        Margin="0,5"/>
         <TextBox Grid.Row="2"
                      Grid.Column="1"
+                        Text="{Binding OriginalPrice, UpdateSourceTrigger=PropertyChanged}"
                      Height="30"
                      Margin="0,5"/>
 
@@ -56,6 +58,7 @@
                        VerticalAlignment="Center"
                        Margin="0,5"/>
         <TextBox Grid.Row="3"
+                    Text="{Binding OfferedPrice, UpdateSourceTrigger=PropertyChanged}"
                      Grid.Column="1"
                      Height="30"
                      Margin="0,5"/>
@@ -66,6 +69,7 @@
                        VerticalAlignment="Center"
                        Margin="0,5"/>
         <TextBox Grid.Row="4"
+                    Text="{Binding GSTpercentage, UpdateSourceTrigger=PropertyChanged}"
                      Grid.Column="1"
                      Height="30"
                      Margin="0,5"/>
@@ -78,7 +82,8 @@
         Foreground="White"
         FontWeight="Bold"
         BorderThickness="0"
-        Cursor="Hand">
+        Cursor="Hand"
+         Command="{Binding SaveCommand}">
 
             <Button.Style>
                 <Style TargetType="Button">

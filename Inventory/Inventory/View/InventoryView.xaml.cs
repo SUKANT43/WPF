@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Inventory.Controller;
+using Inventory.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,14 @@ namespace Inventory.View
     /// </summary>
     public partial class InventoryView : UserControl
     {
+        private InventoryViewModel _inventoryVM;
+
         public InventoryView()
         {
             InitializeComponent();
+            _inventoryVM = new InventoryViewModel();
+            DataContext = _inventoryVM;
+            InputCard.DataContext = new InputCardViewModel(_inventoryVM);
         }
 
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inventory.Base
 {
-    class Observable : INotifyPropertyChanged
+    public class Observable : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string name = null)

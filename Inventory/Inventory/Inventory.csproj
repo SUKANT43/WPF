@@ -59,12 +59,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base\Observable.cs" />
+    <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="Controller\InputCardController.xaml.cs">
       <DependentUpon>InputCardController.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controller\TopBarControl.xaml.cs">
       <DependentUpon>TopBarControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\InputCardViewModel.cs" />
     <Compile Include="ViewModel\InventoryViewModel.cs" />
     <Compile Include="View\InventoryView.xaml.cs">
       <DependentUpon>InventoryView.xaml</DependentUpon>

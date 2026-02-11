@@ -8,13 +8,15 @@ namespace Inventory.Model
 {
     public class InventoryModel
     {
-        public int Id;
         private static int idGenerator = 101;
 
-        public string ProductName;
-        public double OriginalPrice;
-        public double OfferedPrice;
-        public double GSTpercentage;
+        public int Id { get; set; }
+        public string ProductName { get; set; }
+        public double OriginalPrice { get; set; }
+        public double OfferedPrice { get; set; }
+        public double GSTpercentage { get; set; }
+
+
 
 
         public InventoryModel(string productName,double originalPrice,double offeredPrice,double gstPercentage)

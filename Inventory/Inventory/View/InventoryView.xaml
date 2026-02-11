@@ -21,7 +21,7 @@
 
         <!--top panel-->
         <StackPanel Grid.ColumnSpan="2" VerticalAlignment="Center">
-            <controller:TopBarControl/>
+            <controller:TopBarControl />
         </StackPanel>
 
         <!-- input panel -->
@@ -32,7 +32,7 @@
             CornerRadius="8"
             Padding="20"
             Width="350">
-             <controller:InputCardController/>
+                <controller:InputCardController x:Name="InputCard"/>
             </Border>
         </StackPanel>
 
@@ -43,17 +43,32 @@
           CanUserAddRows="False"
           HeadersVisibility="Column"
           Background="{DynamicResource CardBackground}"
+          ItemsSource="{Binding Products}"
           BorderBrush="{DynamicResource BorderColor}"
+          IsReadOnly="True"
           BorderThickness="1">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*" />
-                <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" Width="2*" />
-                <DataGridTextColumn Header="Original Price" Binding="{Binding OriginalPrice}" Width="*" />
-                <DataGridTextColumn Header="Offered Price" Binding="{Binding OfferedPrice}" Width="*" />
-                <DataGridTextColumn Header="GST %" Binding="{Binding GSTpercentage}" Width="*" />
-            </DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                            Binding="{Binding Id}"
+                            Width="*" />
 
+                <DataGridTextColumn Header="Product Name"
+                            Binding="{Binding ProductName}"
+                            Width="2*" />
+
+                <DataGridTextColumn Header="Original Price"
+                            Binding="{Binding OriginalPrice}"
+                            Width="*" />
+
+                <DataGridTextColumn Header="Offered Price"
+                            Binding="{Binding OfferedPrice}"
+                            Width="*" />
+
+                <DataGridTextColumn Header="GST %"
+                            Binding="{Binding GSTpercentage}"
+                            Width="*" />
+            </DataGrid.Columns>
         </DataGrid>
 
 

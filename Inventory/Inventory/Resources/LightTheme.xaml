@@ -2,16 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Inventory.Resources">
 
-    <!-- Backgrounds -->
     <SolidColorBrush x:Key="AppBackground" Color="#F5F7FA"/>
     <SolidColorBrush x:Key="CardBackground" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="BorderColor" Color="#E2E8F0"/>
 
-    <!-- Text Colors -->
     <SolidColorBrush x:Key="PrimaryTextColor" Color="#1E293B"/>
     <SolidColorBrush x:Key="SecondaryTextColor" Color="#64748B"/>
 
-    <!-- Accent -->
     <SolidColorBrush x:Key="PrimaryAccentColor" Color="#2563EB"/>
     <SolidColorBrush x:Key="HoverAccentColor" Color="#1D4ED8"/>
     <BitmapImage x:Key="ThemeImage"
