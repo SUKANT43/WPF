@@ -50,7 +50,6 @@ namespace AttachProperty.Helpers
                 bool isHighlighted = (bool)e.NewValue;
                 ls.Background = isHighlighted ? Brushes.Gold : Brushes.Blue;
             }
-
         }
     }
 }

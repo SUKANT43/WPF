@@ -16,9 +16,6 @@ namespace Inventory.Model
         public double OfferedPrice { get; set; }
         public double GSTpercentage { get; set; }
 
-
-
-
         public InventoryModel(string productName,double originalPrice,double offeredPrice,double gstPercentage)
         {
             Id = idGenerator++;
@@ -30,3 +27,4 @@ namespace Inventory.Model
 
     }
 }
+

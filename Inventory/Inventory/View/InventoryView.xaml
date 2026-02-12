@@ -46,7 +46,8 @@
           ItemsSource="{Binding Products}"
           BorderBrush="{DynamicResource BorderColor}"
           IsReadOnly="True"
-          BorderThickness="1">
+          BorderThickness="1"
+          SelectedItem="{Binding SelectedItem,Mode=TwoWay}">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"
