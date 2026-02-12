@@ -1,5 +1,4 @@
-﻿using Inventory.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Inventory
+namespace Inventory.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SelectedItemView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SelectedItemView : Page
     {
-        public MainWindow()
+        public SelectedItemView()
         {
             InitializeComponent();
-            DataContext = this;
-            MainFrame.Navigate(new InventoryView());
         }
     }
 }

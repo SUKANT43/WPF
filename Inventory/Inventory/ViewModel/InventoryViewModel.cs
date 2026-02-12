@@ -18,5 +18,26 @@ namespace Inventory.ViewModel
         {
             Products = new ObservableCollection<InventoryModel>();
         }
+
+        private InventoryModel _selectedItem;
+
+        public InventoryModel SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged();
+                if (_selectedItem != null)
+                {
+                    OpenDetails(_selectedItem);         
+                }
+            }
+        }
+
+        private void OpenDetails(InventoryModel item)
+        {
+           
+        }
     }
 }

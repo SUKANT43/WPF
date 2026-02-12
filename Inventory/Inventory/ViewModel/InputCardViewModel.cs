@@ -19,8 +19,6 @@ namespace Inventory.ViewModel
         private double _offeredPrice;
         private double _gSTpercentage;
 
-       
-
         public string ProductName
         {
             get => _productName;

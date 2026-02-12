@@ -68,8 +68,12 @@
     </Compile>
     <Compile Include="ViewModel\InputCardViewModel.cs" />
     <Compile Include="ViewModel\InventoryViewModel.cs" />
+    <Compile Include="ViewModel\SelectedItemViewModel.cs" />
     <Compile Include="View\InventoryView.xaml.cs">
       <DependentUpon>InventoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectedItemView.xaml.cs">
+      <DependentUpon>SelectedItemView.xaml</DependentUpon>
     </Compile>
     <Page Include="Controller\InputCardController.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\InventoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectedItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

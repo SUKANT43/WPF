@@ -20,7 +20,7 @@ namespace Inventory.View
     /// <summary>
     /// Interaction logic for InventoryView.xaml
     /// </summary>
-    public partial class InventoryView : UserControl
+    public partial class InventoryView : Page
     {
         private InventoryViewModel _inventoryVM;
 
@@ -31,6 +31,7 @@ namespace Inventory.View
             DataContext = _inventoryVM;
             InputCard.DataContext = new InputCardViewModel(_inventoryVM);
         }
+
 
     }
 }
