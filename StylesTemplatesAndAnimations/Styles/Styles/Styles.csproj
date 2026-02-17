@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{263A6595-A727-4283-9CC4-9471000122BF}</ProjectGuid>
+    <ProjectGuid>{C43D13CE-D8AA-4AEF-993E-6E73941371AE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Inventory</RootNamespace>
-    <AssemblyName>Inventory</AssemblyName>
+    <RootNamespace>Styles</RootNamespace>
+    <AssemblyName>Styles</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -33,10 +33,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,28 +54,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Base\Observable.cs" />
-    <Compile Include="Base\RelayCommand.cs" />
-    <Compile Include="Controller\InputCardController.xaml.cs">
-      <DependentUpon>InputCardController.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controller\TopBarControl.xaml.cs">
-      <DependentUpon>TopBarControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModel\InputCardViewModel.cs" />
-    <Compile Include="ViewModel\InventoryViewModel.cs" />
-    <Compile Include="ViewModel\SelectedItemViewModel.cs" />
-    <Compile Include="View\InventoryView.xaml.cs">
-      <DependentUpon>InventoryView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Controller\InputCardController.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controller\TopBarControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,21 +66,8 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\DarkTheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\LightTheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\InventoryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\InventoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -132,6 +93,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

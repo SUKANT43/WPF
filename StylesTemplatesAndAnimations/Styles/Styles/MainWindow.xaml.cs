@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Inventory.View
+namespace Styles
 {
     /// <summary>
-    /// Interaction logic for SelectedItemView.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class SelectedItemView : Page
+    public partial class MainWindow : Window
     {
-        public SelectedItemView()
+        public MainWindow()
         {
             InitializeComponent();
         }

@@ -30,7 +30,7 @@ namespace Inventory.ViewModel
                 OnPropertyChanged();
                 if (_selectedItem != null)
                 {
-                    OpenDetails(_selectedItem);         
+                    OpenDetails(_selectedItem);
                 }
             }
         }
