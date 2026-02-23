@@ -29,5 +29,14 @@ namespace StickyNotes.Control
         {
             Application.Current.Shutdown();
         }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Window.GetWindow(this)?.DragMove();
+            }
+
+        }
     }
 }

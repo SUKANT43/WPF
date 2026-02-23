@@ -6,5 +6,8 @@
     <SolidColorBrush x:Key="TextColor" Color="#1F1F1F"/>
     <SolidColorBrush x:Key="OptionColor" Color="#555555"/>
     <SolidColorBrush x:Key="HowerColor" Color="#e8ebea"/>
+    <BitmapImage x:Key="ThemeImage"
+             UriSource="C:\Users\SEZ-A4\Desktop\Wpf\WPF\Inventory\Inventory\Images\dark.png"/>
+
 
 </ResourceDictionary>

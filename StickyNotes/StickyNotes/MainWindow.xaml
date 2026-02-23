@@ -10,7 +10,7 @@
         Title="MainWindow" Height="450" Width="800" 
         Background="{DynamicResource AppBackGround}" 
         Foreground="{DynamicResource TextColor}">
-    <Grid>
+    <Grid MouseLeftButtonDown="Window_MouseLeftButtonDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>

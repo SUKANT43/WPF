@@ -5,13 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StickyNotes.View"
              mc:Ignorable="d" 
+             xmlns:control="clr-namespace:StickyNotes.Control"
              d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource AppBackGround}" Foreground="{DynamicResource TextColor}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
+            <RowDefinition Height="300"/>
         </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Text="Sticky Notes"
+            VerticalAlignment="Center"
+            FontWeight="Bold"
+            FontSize="25"/>
     </Grid>
 </UserControl>

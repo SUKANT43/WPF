@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91C7CB9F-7ECA-4FEC-B32A-BE132212D01C}</ProjectGuid>
+    <ProjectGuid>{4FF9C75E-B109-4FE1-813F-BA1430377898}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>StickyNotes</RootNamespace>
-    <AssemblyName>StickyNotes</AssemblyName>
+    <RootNamespace>PAC_Man_Game_WPF_MOO_ICT</RootNamespace>
+    <AssemblyName>PAC_Man_Game_WPF_MOO_ICT</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,8 +36,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,27 +54,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Base\Observable.cs" />
-    <Compile Include="Base\RelayCommand.cs" />
-    <Compile Include="Control\SettingsTopBarControl.xaml.cs">
-      <DependentUpon>SettingsTopBarControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\TopBarControl.xaml.cs">
-      <DependentUpon>TopBarControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModel\HomeViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="View\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Control\SettingsTopBarControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\TopBarControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,18 +66,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ResourceDictionary\DarkThemeResource.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ResourceDictionary\LightThemeResource.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\HomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -129,8 +94,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\dark.png" />
-    <Resource Include="Images\light.png" />
+    <Resource Include="Images\orange.jpg" />
+    <Resource Include="Images\pacman.jpg" />
+    <Resource Include="Images\pink.jpg" />
+    <Resource Include="Images\red.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
