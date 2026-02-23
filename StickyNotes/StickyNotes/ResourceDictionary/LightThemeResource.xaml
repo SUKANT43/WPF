@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:StickyNotes.ResourceDictionary">
+    <SolidColorBrush x:Key="AppBackGround" Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="CardBackGround" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TextColor" Color="#1F1F1F"/>
+    <SolidColorBrush x:Key="OptionColor" Color="#555555"/>
+    <SolidColorBrush x:Key="HowerColor" Color="#e8ebea"/>
+
+</ResourceDictionary>

@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using StickyNotes.View;
 
-namespace StickyNotes
+namespace StickyNotes.View
 {
     /// <summary>
     /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HomeView : UserControl
     {
-        public MainWindow()
+        public HomeView()
         {
             InitializeComponent();
-            MainPage.Content = new HomeView();
         }
     }
 }

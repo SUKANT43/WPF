@@ -12,19 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using StickyNotes.View;
 
-namespace StickyNotes
+namespace StickyNotes.Control
 {
     /// <summary>
-    /// Interaction logic for HomeView.xaml
+    /// Interaction logic for TopBarControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TopBarControl : UserControl
     {
-        public MainWindow()
+        public TopBarControl()
         {
             InitializeComponent();
-            MainPage.Content = new HomeView();
+        }
+
+        private void Close_Application_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StickyNotes"
+        xmlns:control="clr-namespace:StickyNotes.Control"
+        WindowStyle="None"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" 
+        Background="{DynamicResource AppBackGround}" 
+        Foreground="{DynamicResource TextColor}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         
+        <control:TopBarControl Grid.Row="0"/>
+        <ContentControl x:Name="MainPage" Grid.Row="1"/>
     </Grid>
 </Window>
