@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:styles"
+        xmlns:res="clr-namespace:styles.Properties"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
@@ -37,7 +37,7 @@
             </Button.Triggers>
         </Button>
 
-        <Button Content="Hover me" Width="120" Height="40">
+        <Button Content="Hover me" Width="120" Height="40" Click="Button_Click">
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
@@ -110,6 +110,64 @@
             </Button.Triggers>
             
         </Button>
-        
+        <!--<Image Source="{x:Static res:Resources.add}" Width="150"/>-->
+        <Button Content="Click me"
+                Width="120"
+                Height="50"
+                RenderTransformOrigin="0,0">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1" x:Name="transform"/>
+                    <RotateTransform Angle="0" x:Name="rot"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                               Storyboard.TargetName="transform"
+                                Storyboard.TargetProperty="ScaleX"
+                                To="1.5" Duration="0:0:4"/>
+                            <DoubleAnimation
+                               Storyboard.TargetName="transform"
+                                Storyboard.TargetProperty="ScaleY"
+                                To="1.5" Duration="0:0:4"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="rot"
+                                Storyboard.TargetProperty="Angle"
+                                To="360" Duration="0:0:4"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                    </EventTrigger>
+            </Button.Triggers>
+            
+        </Button>
+
+        <Button Width="150" Height="50" Content="Helooo" Style="{StaticResource secondaryButton}"/>
+        <Button Width="150" Height="50" Content="Hower me" Style="{StaticResource howerButton}"/>
+        <Button Width="150" Height="50" Content="Hower me" Style="{StaticResource glowButton}"/>
+
+        <Button Width="200" Height="60" Content="Gradient">
+
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#6A00FF" Offset="0"/>
+                    <GradientStop Color="#C400FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+
+        <StackPanel Height="100" Width="100">
+            <StackPanel.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Purple" Offset="0"/>
+                    <GradientStop Color="Yellow" Offset="1"/>
+                    <GradientStop Color="Green" Offset="2"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+        </StackPanel>
     </StackPanel>
 </Window>
