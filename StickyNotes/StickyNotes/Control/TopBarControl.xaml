@@ -34,10 +34,10 @@
                     />-->
 
             <Image Source="{DynamicResource ThemeImage}"
-       Width="50"
-       Height="50"
-       Stretch="UniformToFill" VerticalAlignment="Center"
-                   Margin="0 10 10 0"/>
+           Width="50"
+           Height="50"
+           Stretch="UniformToFill" VerticalAlignment="Center"
+                       Margin="0 10 10 0"/>
 
 
             <Button Content="✕"
