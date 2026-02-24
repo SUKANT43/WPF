@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Expense_Tracker.Enums
+namespace Expense_Tracker.ViewModel
 {
-    public enum TransactionType
+    class HomeViewModel
     {
-        Expense,
-        Income,
     }
 }

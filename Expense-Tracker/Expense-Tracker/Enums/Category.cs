@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Expense_Tracker.Enums
 {
-    class Category
+    public enum Category
     {
+        Food,
+        Transportation,
+        Utilities,
+        Shopping,
+        Entertainment,
+        Healthcare,
+        Education,
+        Travel,
+        Insurance,
+        Other
     }
 }

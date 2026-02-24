@@ -59,6 +59,9 @@
     </ApplicationDefinition>
     <Compile Include="Base\Observable.cs" />
     <Compile Include="Base\RelayCommand.cs" />
+    <Compile Include="Enums\Category.cs" />
+    <Compile Include="Enums\TransactionType.cs" />
+    <Compile Include="Model\DataModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

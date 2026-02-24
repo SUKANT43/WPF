@@ -56,7 +56,7 @@ namespace Expense_Tracker.ViewModel
             get => _errorMessage;
             set
             {
-                _errorMessage = ErrorMessage;
+                _errorMessage = value;
                 OnPropertyChanged();
             }
         }
@@ -112,6 +112,5 @@ namespace Expense_Tracker.ViewModel
             var pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, pattern);
         }
-
     }
 }
