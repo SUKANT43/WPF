@@ -18,7 +18,7 @@ namespace Expense_Tracker.View
     /// <summary>
     /// Interaction logic for SignupPage.xaml
     /// </summary>
-    public partial class SignupPage : Page
+    public partial class SignupPage : UserControl
     {
         public SignupPage()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Expense_Tracker.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Expense_Tracker.View
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginPage : UserControl
     {
         public LoginPage()
         {

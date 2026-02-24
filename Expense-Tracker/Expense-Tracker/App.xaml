@@ -1,9 +1,30 @@
 ﻿<Application x:Class="Expense_Tracker.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Expense_Tracker"
+             xmlns:view="clr-namespace:Expense_Tracker.View"
+             xmlns:vm="clr-namespace:Expense_Tracker.ViewModel"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+            <Style TargetType="TextBox">
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
+
+        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+            <view:LoginPage/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:SignUpViewModel}">
+            <view:SignupPage/>
+        </DataTemplate>
+
+
+        </ResourceDictionary>
+
     </Application.Resources>
+    
+    
+
 </Application>

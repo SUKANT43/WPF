@@ -1,4 +1,5 @@
 ﻿using Expense_Tracker.View;
+using Expense_Tracker.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Expense_Tracker
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new LoginPage());
+            DataContext = new MainViewModel();
         }
     }
 }
