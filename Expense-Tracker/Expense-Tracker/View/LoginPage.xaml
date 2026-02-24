@@ -84,7 +84,8 @@
                         <TextBox Padding="10"
                                  Background="Transparent"
                                  BorderThickness="0"
-                                 Foreground="White"/>
+                                 Foreground="White" 
+                                 Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
                 </StackPanel>
 
@@ -99,19 +100,27 @@
                             BorderBrush="#60FFFFFF"
                             BorderThickness="1">
 
-                        <PasswordBox Padding="10"
+                        <TextBox Padding="10"
                                      Background="Transparent"
                                      BorderThickness="0"
-                                     Foreground="White"/>
+                                     Foreground="White"
+                                     Text="{Binding Password,UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
                 </StackPanel>
+
+                <TextBlock Text="{Binding ErrorMessage}"
+                       Foreground="Red"
+                       FontWeight="SemiBold"
+                       Margin="0,10,0,0"
+                       TextWrapping="Wrap"/>
+
                 <Button Content="Sign In →"
                     Height="40"
-                    Margin="0,25,0,0"
                     Background="White"
                     Foreground="Black"
                     BorderThickness="0"
-                    FontWeight="Bold">
+                    FontWeight="Bold"
+                        Command="{Binding GoToHomeCommand}">
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
