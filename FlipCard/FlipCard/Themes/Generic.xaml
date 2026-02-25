@@ -1,0 +1,187 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:FlipCard.Controls">
+
+    <Style TargetType="{x:Type local:ProductDisplayCard}">
+        <Setter Property="Width" Value="280"/>
+        <Setter Property="Height" Value="360"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ProductDisplayCard}">
+                    <Border
+                        Background="#fefefe"
+                        CornerRadius="20"
+                        Padding="16">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            
+                            <StackPanel Grid.Row="0">
+                                <Border
+                                    CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="2,2">
+                                            <GradientStop Color="#e4e4f0" Offset="0"/>
+                                            <GradientStop Color="#99a7c2" Offset="1"/>
+                                            <GradientStop Color="#dae3f2" Offset="2"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Image Source="FlipCard;component\Image\apple.png"
+                                           Width="180"
+                                           Height="180"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!--Name and Rating-->
+                            <StackPanel Grid.Row="1">
+                                
+                                <!--Name-->
+                                <TextBlock
+                                    Foreground="#03081d"
+                                    Text="Apple Watch Series 7 Steel"
+                                    FontWeight="Bold"
+                                    FontSize="20"
+                                    />
+                                
+                                       <!--Rating-->
+                                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="0 4 0 0">
+                                        <TextBlock Text="("
+                                               Foreground="#7b7c80"
+                                               FontSize="13"/>
+                                        <TextBlock Text="1,520"
+                                               FontSize="13"
+                                               Foreground="#7b7c80"/>
+                                        <TextBlock Text=")"
+                                               FontSize="13"
+                                               Foreground="#7b7c80"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </StackPanel>
+
+                            <!--price , offer and stock-->
+                            <StackPanel Grid.Row="2">
+                                
+                                <!--price and offer-->
+                                <StackPanel Orientation="Horizontal">
+                                    
+                                    
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="₹" 
+                                               Foreground="#004f2f"
+                                               FontWeight="Bold"
+                                               FontSize="18"/>
+                                        <TextBlock Text="29,999"
+                                               Foreground="#004f2f"
+                                               FontWeight="Bold"
+                                               FontSize="18"/>
+                                    </StackPanel>
+                                   
+                                        
+                                    <!--original price-->
+                                    <StackPanel Orientation="Horizontal" Margin="7 4 0 0">
+                                        <TextBlock Text="₹" 
+                                               Foreground="#7b7c80"
+                                               FontSize="15"
+                                               >
+                                            <TextBlock.TextDecorations>
+                                                <TextDecorationCollection>
+                                                    <TextDecoration Location="Strikethrough"
+                                                                PenThicknessUnit="FontRecommended"/>
+                                                </TextDecorationCollection>
+                                            </TextBlock.TextDecorations>
+                                        </TextBlock>
+                                        <TextBlock Text="39,999" 
+                                               Foreground="#7b7c80"
+                                               FontSize="15"
+                                               >
+                                            <TextBlock.TextDecorations>
+                                                <TextDecorationCollection>
+                                                    <TextDecoration Location="Strikethrough"
+                                                                PenThicknessUnit="FontRecommended"/>
+                                                </TextDecorationCollection>
+                                            </TextBlock.TextDecorations>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    
+                                    
+                                     <!--offer percentage-->
+                                    <StackPanel Orientation="Horizontal" Margin="10 5 0 0">
+                                        <TextBlock Text="25"
+                                                   Foreground="#004f2f"
+                                                   FontSize="14"/>
+                                        <TextBlock Text="%"
+                                                   Foreground="#004f2f"
+                                                   FontSize="14"/>
+                                        <TextBlock Text="off"
+                                                   Margin="5 0 0 0"
+                                                   Foreground="#004f2f"
+                                                   FontSize="14"/>
+                                    </StackPanel>
+                                    
+                                </StackPanel>
+                                
+                            </StackPanel>
+
+                               <!--stock indicator-->
+                            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 6 0 0 ">
+                                <Border
+                                    CornerRadius="100"
+                                    Background="Green"
+                                    Width="8"
+                                    Height="8"/>
+                                <TextBlock Text="In Stock"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           Foreground="#004f2f"
+                                           Margin="4 0 0 0"/>
+                            </StackPanel>
+                            
+                            <!--button-->
+                            <Button Content="Add to Cart"
+                                Grid.Row="4"
+                                Foreground="White"
+                                Background="#1b61dd"
+                                FontWeight="Bold"
+                                Padding="7">
+
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="8"
+                                                Background="{TemplateBinding Background}"
+                                                Padding="{TemplateBinding Padding}">
+                                            <ContentPresenter
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                RecognizesAccessKey="True"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
