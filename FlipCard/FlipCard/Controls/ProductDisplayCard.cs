@@ -50,5 +50,68 @@ namespace FlipCard.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ProductDisplayCard), new FrameworkPropertyMetadata(typeof(ProductDisplayCard)));
         }
+
+        public string ProductName
+        {
+            get;
+            set;
+        }
+
+        public string ImageSource
+        {
+            get;
+            set;
+        }
+
+        public double OfferedPrice
+        {
+            get;
+            set;
+        }
+
+        public double OriginalPrice
+        {
+            get;
+            set;
+        }
+       
+        public double OfferPercentage
+        {
+            get;
+            set;
+        }
+
+        public int RatingCount
+        {
+            get;
+            set;
+        }
+
+        public bool IsPriceIncreased
+        {
+            get => (bool)GetValue(IsPriceIncreasedProperty);
+            set => SetValue(IsPriceIncreasedProperty, value);
+        }
+
+        public static readonly DependencyProperty IsPriceIncreasedProperty =
+            DependencyProperty.Register(
+                nameof(IsPriceIncreased),
+                typeof(bool),
+                typeof(ProductDisplayCard),
+                new PropertyMetadata(false));
+
+        public bool IsOutOfStock
+        {
+            get => (bool)GetValue(IsOutOfStockProperty);
+            set => SetValue(IsOutOfStockProperty, value);
+        }
+
+        public static readonly DependencyProperty IsOutOfStockProperty =
+            DependencyProperty.Register(
+                nameof(IsOutOfStock),
+                typeof(bool),
+                typeof(ProductDisplayCard),
+                new PropertyMetadata(false));
+
     }
 }
