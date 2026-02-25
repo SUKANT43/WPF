@@ -13,9 +13,8 @@
                                     OfferedPrice="29999"
                                     OriginalPrice="39999"
                                     HorizontalAlignment="Left"
-                                    OfferPercentage="25"
                                     RatingCount="3595"
-                                    IsPriceIncreased="True"
+                                    IsPriceIncreased="False"
                                     IsOutOfStock="False"
                                     />
 

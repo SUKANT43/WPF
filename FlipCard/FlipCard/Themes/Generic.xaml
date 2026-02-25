@@ -134,7 +134,8 @@
                                     
                                      <!--offer percentage-->
                                     <StackPanel Orientation="Horizontal" Margin="10 5 0 0">
-                                        <TextBlock Text="{Binding OfferPercentage,RelativeSource={RelativeSource AncestorType=Control}}"
+                                        <TextBlock Text="{Binding DiscountPercentage,
+                                            RelativeSource={RelativeSource TemplatedParent}}"
                                            Foreground="#004f2f"
                                            FontSize="14"/>
                                         <TextBlock Text="%"
@@ -171,7 +172,9 @@
                                 Foreground="White"
                                 Background="#1b61dd"
                                 FontWeight="Bold"
-                                Padding="7">
+                                Padding="7"
+                               helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,RelativeSource={RelativeSource AncestorType=Control}}"
+                                    >
 
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
@@ -183,6 +186,7 @@
                                                 VerticalAlignment="Center"
                                                 RecognizesAccessKey="True"/>
                                         </Border>
+                                  
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>

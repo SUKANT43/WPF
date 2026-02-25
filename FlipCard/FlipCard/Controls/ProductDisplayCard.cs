@@ -74,13 +74,21 @@ namespace FlipCard.Controls
             get;
             set;
         }
-       
-        public double OfferPercentage
-        {
-            get;
-            set;
-        }
 
+        public int DiscountPercentage
+        {
+            get
+            {
+                if (OriginalPrice <= 0 || OfferedPrice <= 0)
+                    return 0;
+
+                if (OfferedPrice >= OriginalPrice)
+                    return 0;
+
+                return (int)Math.Round(
+                    (OriginalPrice - OfferedPrice) / OriginalPrice * 100);
+            }
+        }
         public int RatingCount
         {
             get;
@@ -99,7 +107,7 @@ namespace FlipCard.Controls
                 typeof(bool),
                 typeof(ProductDisplayCard),
                 new PropertyMetadata(false));
-
+   
         public bool IsOutOfStock
         {
             get => (bool)GetValue(IsOutOfStockProperty);
@@ -107,11 +115,12 @@ namespace FlipCard.Controls
         }
 
         public static readonly DependencyProperty IsOutOfStockProperty =
-            DependencyProperty.Register(
-                nameof(IsOutOfStock),
-                typeof(bool),
-                typeof(ProductDisplayCard),
-                new PropertyMetadata(false));
+    DependencyProperty.Register(
+        nameof(IsOutOfStock),
+        typeof(bool),
+        typeof(ProductDisplayCard),
+        new PropertyMetadata(false));
+
 
     }
 }

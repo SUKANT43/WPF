@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Controls\ProductDisplayCard.cs" />
     <Compile Include="Helper\HighLightHelper.cs" />
+    <Compile Include="Helper\StartHelper.cs" />
     <Compile Include="Helper\StockHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

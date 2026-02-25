@@ -43,6 +43,13 @@ namespace FlipCard.Helper
                     Border.BackgroundProperty,
                     isOut ? Brushes.Red : Brushes.Green);
             }
+
+            if(d is Button button)
+            {
+                button.Visibility = isOut
+                    ? Visibility.Collapsed
+                    : Visibility.Visible;
+            }
         }
     }
 }
