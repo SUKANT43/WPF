@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,7 +121,7 @@ namespace FlipCard.Controls
                 typeof(bool),
                 typeof(ProductDisplayCard),
                 new PropertyMetadata(false));
-   
+
         public bool IsOutOfStock
         {
             get => (bool)GetValue(IsOutOfStockProperty);
@@ -135,5 +136,108 @@ namespace FlipCard.Controls
         new PropertyMetadata(false));
 
 
+       
+
+        public string ProductDescription
+        {
+            get;
+            set;
+        }
+
+
+        public ProductDisplayCard()
+        {
+            ProductFeatures = new ObservableCollection<string>();
+            IsLiked = false;
+        }
+
+        public ObservableCollection<string> ProductFeatures
+        {
+            get => (ObservableCollection<string>)GetValue(ProductFeaturesProperty);
+            set => SetValue(ProductFeaturesProperty, value);
+        }
+
+        public static readonly DependencyProperty ProductFeaturesProperty =
+            DependencyProperty.Register(
+                nameof(ProductFeatures),
+                typeof(ObservableCollection<string>),
+                typeof(ProductDisplayCard),
+                new PropertyMetadata(null));
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            if (GetTemplateChild("likeButton") is Button likeButton)
+            {
+                likeButton.Click -= LikeButton_Click;
+                likeButton.Click += LikeButton_Click;
+            }
+
+
+            this.MouseLeftButtonUp -= Card_MouseLeftButtonUp;
+            this.MouseLeftButtonUp += Card_MouseLeftButtonUp;
+
+        }
+
+        private void Card_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            IsFlipped = !IsFlipped;
+        }
+
+        private void LikeButton_Click(object sender, RoutedEventArgs e)
+        {
+            IsLiked = !IsLiked;
+        }
+
+        public static readonly DependencyProperty IsLikedProperty =
+            DependencyProperty.Register(
+                nameof(IsLiked),
+                typeof(bool),
+                typeof(ProductDisplayCard),
+                new PropertyMetadata(false, OnIsLikedChanged));
+
+        public bool IsLiked
+        {
+            get => (bool)GetValue(IsLikedProperty);
+            set => SetValue(IsLikedProperty, value);
+        }
+
+        private static void OnIsLikedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (ProductDisplayCard)d;
+
+            control.HeartPngSource = (bool)e.NewValue
+                ? "pack://application:,,,/FlipCard;component/Image/heart-filled.png"
+                : "pack://application:,,,/FlipCard;component/Image/heart-raw.png";
+        }
+
+        public static readonly DependencyProperty HeartPngSourceProperty =
+            DependencyProperty.Register(
+                nameof(HeartPngSource),
+                typeof(string),
+                typeof(ProductDisplayCard),
+                new PropertyMetadata("pack://application:,,,/FlipCard;component/Image/heart-raw.png"));
+
+        public string HeartPngSource
+        {
+            get => (string)GetValue(HeartPngSourceProperty);
+            set => SetValue(HeartPngSourceProperty, value);
+        }
+
+        public static readonly DependencyProperty IsFlippedProperty =
+            DependencyProperty.Register(
+                nameof(IsFlipped),
+                typeof(bool),
+                typeof(ProductDisplayCard),
+                new PropertyMetadata(false));
+
+        public bool IsFlipped
+        {
+            get => (bool)GetValue(IsFlippedProperty);
+            set => SetValue(IsFlippedProperty, value);
+        }
+
     }
 }
+

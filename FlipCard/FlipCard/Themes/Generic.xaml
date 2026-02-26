@@ -5,214 +5,375 @@
     xmlns:helper="clr-namespace:FlipCard.Helper">
 
     <Style TargetType="{x:Type local:ProductDisplayCard}">
-        <Setter Property="Width" Value="285"/>
-        <Setter Property="Height" Value="360"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Height" Value="Auto"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ProductDisplayCard}">
-                    <Border
-                        Background="#fefefe"
-                        CornerRadius="20"
-                        Padding="16">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
 
+                    <Grid x:Name="RootGrid" RenderTransformOrigin="0.5,0.5">
 
-                            <Grid Grid.Row="0">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="FlipScale" ScaleX="1"/>
+                        </Grid.RenderTransform>
 
-                                <Border CornerRadius="5">
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="#e4e4f0" Offset="0"/>
-                                            <GradientStop Color="#99a7c2" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Border.Background>
+                        <!-- FRONT SIDE -->
+                        <Border x:Name="FrontCard"
+                                Background="#fefefe"
+                                CornerRadius="20"
+                                Padding="16">
 
-                                    <Image Source="{Binding ImageSource,
-                                            RelativeSource={RelativeSource TemplatedParent}}"
-                                           Width="200"
-                                           Height="180"/>
-                                </Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
-                                <!-- Overlay Badge -->
-                                <Border Background="#df4c4f"
-                                        HorizontalAlignment="Left"
+                                <!-- IMAGE SECTION -->
+                                <Grid Grid.Row="0">
+                                    <Border CornerRadius="5">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#e4e4f0" Offset="0"/>
+                                                <GradientStop Color="#99a7c2" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                        <Image Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                               Width="200"
+                                               Height="180"/>
+                                    </Border>
+
+                                    <!-- Discount Badge -->
+                                    <Border Background="#df4c4f"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            Margin="2"
+                                            CornerRadius="8"
+                                            Panel.ZIndex="3"
+                                            Visibility="{Binding IsDiscountPercentageVisible,
+                                                         RelativeSource={RelativeSource AncestorType=Control}}">
+                                        <TextBlock Text="{Binding DiscountPercentage,
+                                                          RelativeSource={RelativeSource TemplatedParent},
+                                                          StringFormat={}{0}% OFF}"
+                                                   Foreground="White"
+                                                   FontWeight="Bold"
+                                                   FontSize="16"
+                                                   Padding="6 3"/>
+                                    </Border>
+
+                                    <Button
                                         VerticalAlignment="Top"
-                                        Margin="2"
-                                        CornerRadius="8"
-                                        Panel.ZIndex="3"
-                                         Visibility="{Binding IsDiscountPercentageVisible,RelativeSource={RelativeSource AncestorType=Control}}">
+                                        HorizontalAlignment="Right"
+                                        Margin="4"
+                                        Background="Transparent"
+                                        x:Name="likeButton"
+                                        >
+                                        <StackPanel>
+                                            <Image Source="{Binding HeartPngSource,
+                                                         RelativeSource={RelativeSource TemplatedParent}}"
+                                                   Width="30"/>
+                                        </StackPanel>
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border BorderBrush="Transparent"
+                                                        BorderThickness="0"
+                                                        Background="{TemplateBinding Background}">
+                                                    <ContentPresenter
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center"/>
 
-                                    <TextBlock Text="{Binding DiscountPercentage,
-                                                      RelativeSource={RelativeSource TemplatedParent},
-                                                      StringFormat={}{0}% OFF}"
-                                                       Foreground="White"
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    
+                                </Grid>
+
+                                <!-- NAME + RATING -->
+                                <StackPanel Grid.Row="1">
+
+                                    <TextBlock
+                                        Foreground="#03081d"
+                                        Text="{Binding ProductName,
+                                               RelativeSource={RelativeSource AncestorType=Control}}"
+                                        FontWeight="Bold"
+                                        TextWrapping="WrapWithOverflow"
+                                        FontSize="20"/>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                            <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                            <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                            <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                            <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0 4 0 0">
+                                            <TextBlock Text="(" Foreground="#7b7c80" FontSize="13"/>
+                                            <TextBlock Text="{Binding RatingCount,
+                                                              RelativeSource={RelativeSource AncestorType=Control}}"
+                                                       FontSize="13"
+                                                       Foreground="#7b7c80"/>
+                                            <TextBlock Text=")" FontSize="13" Foreground="#7b7c80"/>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- PRICE SECTION -->
+                                <StackPanel Grid.Row="2">
+
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="₹"
                                                        FontWeight="Bold"
-                                                       FontSize="16"
-                                                       Padding="6 3"/>
-                                </Border>
+                                                       FontSize="18"
+                                                       helper:HighLightHelper.IsHighlighted="{Binding IsPriceIncreased,
+                                                                                             RelativeSource={RelativeSource TemplatedParent}}"/>
+
+                                            <TextBlock Text="{Binding OfferedPrice,
+                                                              RelativeSource={RelativeSource TemplatedParent}}"
+                                                       FontWeight="Bold"
+                                                       FontSize="18"
+                                                       helper:HighLightHelper.IsHighlighted="{Binding IsPriceIncreased,
+                                                                                             RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="7 4 0 0">
+                                            <TextBlock Text="₹"
+                                                       Foreground="#7b7c80"
+                                                       FontSize="15">
+                                                <TextBlock.TextDecorations>
+                                                    <TextDecorationCollection>
+                                                        <TextDecoration Location="Strikethrough"/>
+                                                    </TextDecorationCollection>
+                                                </TextBlock.TextDecorations>
+                                            </TextBlock>
+
+                                            <TextBlock Text="{Binding OriginalPrice,
+                                                              RelativeSource={RelativeSource AncestorType=Control}}"
+                                                       Foreground="#7b7c80"
+                                                       FontSize="15">
+                                                <TextBlock.TextDecorations>
+                                                    <TextDecorationCollection>
+                                                        <TextDecoration Location="Strikethrough"/>
+                                                    </TextDecorationCollection>
+                                                </TextBlock.TextDecorations>
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal"
+                                                    Margin="10 5 0 0"
+                                                    Visibility="{Binding IsDiscountPercentageVisible,
+                                                                 RelativeSource={RelativeSource AncestorType=Control}}">
+                                            <TextBlock Text="{Binding DiscountPercentage,
+                                                              RelativeSource={RelativeSource TemplatedParent}}"
+                                                       Foreground="#004f2f"
+                                                       FontSize="14"/>
+                                            <TextBlock Text="%"
+                                                       Foreground="#004f2f"
+                                                       FontSize="14"/>
+                                            <TextBlock Text="off"
+                                                       Margin="5 0 0 0"
+                                                       Foreground="#004f2f"
+                                                       FontSize="14"/>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- STOCK -->
+                                <StackPanel Grid.Row="3"
+                                            Orientation="Horizontal"
+                                            Margin="0 6 0 0">
+
+                                    <Border helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,
+                                                                              RelativeSource={RelativeSource AncestorType=Control}}"
+                                            CornerRadius="100"
+                                            Width="8"
+                                            Height="8"/>
+
+                                    <TextBlock helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,
+                                                                                RelativeSource={RelativeSource AncestorType=Control}}"
+                                               FontSize="13"
+                                               FontWeight="SemiBold"
+                                               Margin="4 0 0 0"/>
+                                </StackPanel>
+
+                                <!-- BUTTON -->
+                                <Button Content="Add to Cart"
+                                        Grid.Row="4"
+                                        Margin="0 5 0 0"
+                                        Foreground="White"
+                                        Background="#1b61dd"
+                                        FontWeight="Bold"
+                                        Padding="7"
+                                        helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,
+                                                                          RelativeSource={RelativeSource AncestorType=Control}}">
+
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="8"
+                                                    Background="{TemplateBinding Background}"
+                                                    Padding="{TemplateBinding Padding}">
+                                                <ContentPresenter
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+
+                                </Button>
 
                             </Grid>
+                        </Border>
 
-                            <!--Name and Rating-->
-                            <StackPanel Grid.Row="1">
+                        <!-- BACK SIDE -->
+                        <Border x:Name="BackCard"
+                                Background="#97a7c1"
+                                CornerRadius="20"
+                                Padding="16"
+                                Visibility="Visible">
 
-                                <!--Name-->
-                                <!--Text="Apple Watch Series 7 Steel"-->
-                                <TextBlock
-                                    Foreground="#03081d"
-                                    Text="{Binding ProductName,RelativeSource={RelativeSource AncestorType=Control}}"
-                                    FontWeight="Bold"
-                                    FontSize="20"
-                                    />
+                            <Border Background="#fdfdff"
+                                    Padding="20"
+                                    CornerRadius="20">
 
-                                <!--Rating-->
-                                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                                <Grid>
 
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
-                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
-                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
-                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
-                                        <TextBlock Text="★" Foreground="Gold" FontSize="18"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <StackPanel Grid.Row="0">
+                                        <TextBlock Text="Product Details"
+                                                   FontSize="20"
+                                                   FontWeight="Bold"
+                                                   TextWrapping="Wrap"/>
+
+                                        <Border Height="2"
+                                                Margin="0,10,0,0"
+                                                Background="#e0e1ea"/>
                                     </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal"
-                                                Margin="0 4 0 0">
-                                        <TextBlock Text="("
-                                               Foreground="#7b7c80"
-                                               FontSize="13"/>
-                                        <TextBlock Text="{Binding RatingCount,RelativeSource={RelativeSource AncestorType=Control}}"
-                                               FontSize="13"
-                                               Foreground="#7b7c80"/>
-                                        <TextBlock Text=")"
-                                               FontSize="13"
-                                               Foreground="#7b7c80"/>
-                                    </StackPanel>
-                                </StackPanel>
+                                    <StackPanel Grid.Row="1" Margin="0,15,0,0">
+                                        <TextBlock Text="{Binding ProductDescription,
+                                                          RelativeSource={RelativeSource TemplatedParent}}"
+                                                   FontSize="14"
+                                                   Foreground="#444"
+                                                   TextWrapping="Wrap"/>
 
-                            </StackPanel>
-
-                            <!--price , offer and stock-->
-                            <StackPanel Grid.Row="2">
-
-                                <!--price and offer-->
-                                <StackPanel Orientation="Horizontal">
-
-                                    <!--004f2f-->
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="₹" 
-                                               FontWeight="Bold"
-                                               FontSize="18"
-                                                    helper:HighLightHelper.IsHighlighted=
-                                               "{Binding IsPriceIncreased,
-                                                RelativeSource={RelativeSource TemplatedParent}}"/>
-
-                                        <TextBlock Text="{Binding OfferedPrice,
-                                              RelativeSource={RelativeSource TemplatedParent}}"
-                                               helper:HighLightHelper.IsHighlighted=
-                                               "{Binding IsPriceIncreased,
-                                                RelativeSource={RelativeSource TemplatedParent}}"
-                                               FontWeight="Bold"
-                                               FontSize="18"/>
-
+                                        <Border Height="2"
+                                                Margin="0,10,0,0"
+                                                Background="#e0e1ea"/>
                                     </StackPanel>
 
+                                    <ItemsControl Grid.Row="2"
+                                                  Margin="0,15,0,0"
+                                                  ItemsSource="{Binding ProductFeatures,
+                                                                RelativeSource={RelativeSource TemplatedParent}}">
 
-                                    <!--original price-->
-                                    <StackPanel Orientation="Horizontal" Margin="7 4 0 0">
-                                        <TextBlock Text="₹" 
-                                               Foreground="#7b7c80"
-                                               FontSize="15"
-                                               >
-                                            <TextBlock.TextDecorations>
-                                                <TextDecorationCollection>
-                                                    <TextDecoration Location="Strikethrough"
-                                                                PenThicknessUnit="FontRecommended"/>
-                                                </TextDecorationCollection>
-                                            </TextBlock.TextDecorations>
-                                        </TextBlock>
-                                        <TextBlock Text="{Binding OriginalPrice,RelativeSource={RelativeSource AncestorType=Control}}" 
-                                               Foreground="#7b7c80"
-                                               FontSize="15"
-                                               >
-                                            <TextBlock.TextDecorations>
-                                                <TextDecorationCollection>
-                                                    <TextDecoration Location="Strikethrough"
-                                                                PenThicknessUnit="FontRecommended"/>
-                                                </TextDecorationCollection>
-                                            </TextBlock.TextDecorations>
-                                        </TextBlock>
-                                    </StackPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
 
+                                                    <Image Source="pack://application:,,,/FlipCard;component/Image/tick.png"
+                                                           Width="14"
+                                                           Height="14"
+                                                           Margin="0,0,6,0"/>
 
-                                    <!--offer percentage-->
-                                    <StackPanel Orientation="Horizontal" Margin="10 5 0 0"  Visibility="{Binding IsDiscountPercentageVisible,RelativeSource={RelativeSource AncestorType=Control}}">
-                                        <TextBlock Text="{Binding DiscountPercentage,
-                                            RelativeSource={RelativeSource TemplatedParent}}"
-                                           Foreground="#004f2f"
-                                           FontSize="14"/>
-                                        <TextBlock Text="%"
-                                                   Foreground="#004f2f"
-                                                   FontSize="14"/>
-                                        <TextBlock Text="off"
-                                                   Margin="5 0 0 0"
-                                                   Foreground="#004f2f"
-                                                   FontSize="14"/>
-                                    </StackPanel>
+                                                    <TextBlock Text="{Binding}"
+                                                               FontSize="14"
+                                                               VerticalAlignment="Center"/>
 
-                                </StackPanel>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
 
-                            </StackPanel>
+                                    </ItemsControl>
 
-                            <!--stock indicator-->
-                            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 6 0 0 ">
-                                <Border
-                                    helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,RelativeSource={RelativeSource AncestorType=Control}}"
-                                    CornerRadius="100"
-                                    Width="8"
-                                    Height="8"/>
-                                <TextBlock 
-                                           helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,RelativeSource={RelativeSource AncestorType=Control}}"
-                                           FontSize="13"
-                                           FontWeight="SemiBold"
-                                           Margin="4 0 0 0"/>
-                            </StackPanel>
+                                    <Grid Grid.Row="3" Margin="0,20,0,0">
+                                        <Button Content="Buy Now"
+                                                Width="150"
+                                                Height="45"
+                                                HorizontalAlignment="Left"
+                                                Background="#fc7523"
+                                                Foreground="White"
+                                                FontWeight="Bold"
+                                                Cursor="Hand">
 
-                            <!--button-->
-                            <Button Content="Add to Cart"
-                                    Margin="0 5 0 0"
-                                Grid.Row="4"
-                                Foreground="White"
-                                Background="#1b61dd"
-                                FontWeight="Bold"
-                                Padding="7"
-                               helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,RelativeSource={RelativeSource AncestorType=Control}}"
-                                    >
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border CornerRadius="25"
+                                                            Background="{TemplateBinding Background}">
+                                                        <ContentPresenter
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
 
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border CornerRadius="8"
-                                                Background="{TemplateBinding Background}"
-                                                Padding="{TemplateBinding Padding}">
-                                            <ContentPresenter
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                RecognizesAccessKey="True"/>
-                                        </Border>
+                                        </Button>
+                                    </Grid>
 
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
+                                </Grid>
 
-                        </Grid>
-                    </Border>
+                            </Border>
+                        </Border>
+
+                    </Grid>
+
+                    <!-- TRIGGERS -->
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsFlipped" Value="True">
+                            <Setter TargetName="FrontCard" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="BackCard" Property="Visibility" Value="Visible"/>
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FlipScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         From="1"
+                                                         To="0"
+                                                         Duration="0:0:0.15"
+                                                         AutoReverse="True"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                        <Trigger Property="IsFlipped" Value="False">
+                            <Setter TargetName="FrontCard" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="BackCard" Property="Visibility" Value="Collapsed"/>
+
+                            <!--<Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FlipScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         From="1"
+                                                         To="0"
+                                                         Duration="0:0:0.15"
+                                                         AutoReverse="True"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>-->
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

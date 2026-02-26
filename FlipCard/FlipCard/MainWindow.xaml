@@ -1,5 +1,6 @@
 ﻿<Window x:Class="FlipCard.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,15 +9,27 @@
         Title="MainWindow" Height="450" Width="800"
         xmlns:control="clr-namespace:FlipCard.Controls">
     <Grid Background="#1f2b43">
-        <control:ProductDisplayCard ProductName="Apple Watch Series 7 Steel"
-                                    ImageSource="FlipCard;component\Image\apple.png"
-                                    OfferedPrice="299"
-                                    OriginalPrice="39999"
-                                    HorizontalAlignment="Left"
-                                    RatingCount="3595"
-                                    IsPriceIncreased="False"
-                                    IsOutOfStock="False"
-                                    />
+        <control:ProductDisplayCard 
+    ProductName="Apple Watch Series 7 Steel  jui kh hh h uih uih uh h  h"
+    ImageSource="FlipCard;component/Image/apple.png"
+    OfferedPrice="299"
+    OriginalPrice="39999"
+    HorizontalAlignment="Left"
+    RatingCount="3595"
+    IsPriceIncreased="False"
+    IsOutOfStock="False"
+
+    ProductDescription="Experience the future of health monitoring with advanced sensors, seamless connectivity, and a stunning Always-On Retina display. Designed for fitness, health tracking, and everyday productivity.">
+
+            <control:ProductDisplayCard.ProductFeatures>
+                <sys:String>Retina Always-On Display</sys:String>
+                <sys:String>Blood Oxygen Sensor</sys:String>
+                <sys:String>ECG App Support</sys:String>
+                <sys:String>Fast Charging Capability</sys:String>
+                <sys:String>Water Resistant Design</sys:String>
+            </control:ProductDisplayCard.ProductFeatures>
+
+        </control:ProductDisplayCard>
 
     </Grid>
 </Window>
