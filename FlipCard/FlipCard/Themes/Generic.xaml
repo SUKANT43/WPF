@@ -22,23 +22,43 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            
-                            
-                            <StackPanel Grid.Row="0">
-                                <Border
-                                    CornerRadius="5">
+
+
+                            <Grid Grid.Row="0">
+
+                                <Border CornerRadius="5">
                                     <Border.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="2,2">
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                             <GradientStop Color="#e4e4f0" Offset="0"/>
                                             <GradientStop Color="#99a7c2" Offset="1"/>
-                                            <GradientStop Color="#dae3f2" Offset="2"/>
                                         </LinearGradientBrush>
                                     </Border.Background>
-                                    <Image Source="{Binding ImageSource,RelativeSource={RelativeSource AncestorType=Control}}"
-                                           Width="180"
+
+                                    <Image Source="{Binding ImageSource,
+                                            RelativeSource={RelativeSource TemplatedParent}}"
+                                           Width="200"
                                            Height="180"/>
                                 </Border>
-                            </StackPanel>
+
+                                <!-- Overlay Badge -->
+                                <Border Background="#df4c4f"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Margin="2"
+                                        CornerRadius="8"
+                                        Panel.ZIndex="3"
+                                         Visibility="{Binding IsDiscountPercentageVisible,RelativeSource={RelativeSource AncestorType=Control}}">
+
+                                    <TextBlock Text="{Binding DiscountPercentage,
+                                                      RelativeSource={RelativeSource TemplatedParent},
+                                                      StringFormat={}{0}% OFF}"
+                                                       Foreground="White"
+                                                       FontWeight="Bold"
+                                                       FontSize="16"
+                                                       Padding="6 3"/>
+                                </Border>
+
+                            </Grid>
 
                             <!--Name and Rating-->
                             <StackPanel Grid.Row="1">
@@ -51,8 +71,8 @@
                                     FontWeight="Bold"
                                     FontSize="20"
                                     />
-                                
-                                       <!--Rating-->
+
+                                <!--Rating-->
                                 <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
 
                                     <StackPanel Orientation="Horizontal">
@@ -81,7 +101,7 @@
 
                             <!--price , offer and stock-->
                             <StackPanel Grid.Row="2">
-                                
+
                                 <!--price and offer-->
                                 <StackPanel Orientation="Horizontal">
 
@@ -93,7 +113,7 @@
                                                     helper:HighLightHelper.IsHighlighted=
                                                "{Binding IsPriceIncreased,
                                                 RelativeSource={RelativeSource TemplatedParent}}"/>
-                                        
+
                                         <TextBlock Text="{Binding OfferedPrice,
                                               RelativeSource={RelativeSource TemplatedParent}}"
                                                helper:HighLightHelper.IsHighlighted=
@@ -101,9 +121,9 @@
                                                 RelativeSource={RelativeSource TemplatedParent}}"
                                                FontWeight="Bold"
                                                FontSize="18"/>
-                                        
-                                        </StackPanel>
-                                    
+
+                                    </StackPanel>
+
 
                                     <!--original price-->
                                     <StackPanel Orientation="Horizontal" Margin="7 4 0 0">
@@ -130,10 +150,10 @@
                                             </TextBlock.TextDecorations>
                                         </TextBlock>
                                     </StackPanel>
-                                    
-                                    
-                                     <!--offer percentage-->
-                                    <StackPanel Orientation="Horizontal" Margin="10 5 0 0">
+
+
+                                    <!--offer percentage-->
+                                    <StackPanel Orientation="Horizontal" Margin="10 5 0 0"  Visibility="{Binding IsDiscountPercentageVisible,RelativeSource={RelativeSource AncestorType=Control}}">
                                         <TextBlock Text="{Binding DiscountPercentage,
                                             RelativeSource={RelativeSource TemplatedParent}}"
                                            Foreground="#004f2f"
@@ -146,12 +166,12 @@
                                                    Foreground="#004f2f"
                                                    FontSize="14"/>
                                     </StackPanel>
-                                    
+
                                 </StackPanel>
-                                
+
                             </StackPanel>
 
-                               <!--stock indicator-->
+                            <!--stock indicator-->
                             <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 6 0 0 ">
                                 <Border
                                     helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,RelativeSource={RelativeSource AncestorType=Control}}"
@@ -164,7 +184,7 @@
                                            FontWeight="SemiBold"
                                            Margin="4 0 0 0"/>
                             </StackPanel>
-                            
+
                             <!--button-->
                             <Button Content="Add to Cart"
                                     Margin="0 5 0 0"
@@ -186,7 +206,7 @@
                                                 VerticalAlignment="Center"
                                                 RecognizesAccessKey="True"/>
                                         </Border>
-                                  
+
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>

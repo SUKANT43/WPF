@@ -89,6 +89,19 @@ namespace FlipCard.Controls
                     (OriginalPrice - OfferedPrice) / OriginalPrice * 100);
             }
         }
+
+        public Visibility IsDiscountPercentageVisible
+        {
+            get
+            {
+                if (DiscountPercentage <= 0)
+                {
+                    return Visibility.Collapsed;
+                }
+                return Visibility.Visible;
+            }
+        }
+
         public int RatingCount
         {
             get;
