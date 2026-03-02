@@ -265,109 +265,161 @@
 
                             </Grid>
                         </Border>
+                        
 
                         <!-- BACK SIDE -->
                         <Grid x:Name="BackCard"
                               Visibility="Collapsed">
 
-                            <Border Background="{DynamicResource BackOuterBrush}"
-                                    CornerRadius="20"/>
+                            <Grid>
 
-                            <Border Background="{DynamicResource BackInnerBrush}"
-                                    Margin="12"
-                                    CornerRadius="20"/>
+                                <Border Background="{DynamicResource BackOuterBrush}"
+                                        CornerRadius="20"/>
 
-                            <Viewbox Margin="20">
-                                <Path Fill="{DynamicResource BackContentBrush}"
+                                <Path x:Name="BackShape"
+                                      Fill="{DynamicResource BackContentBrush}"
                                       Stretch="Fill"
-                                      Data="
-                                      M0,20
-                                      Q0,0 20,0
-                                      L280,0
-                                      Q300,0 300,20
-                                      L300,330
-                                      Q300,350 280,350
-                                      L20,350
-                                      Q0,350 0,330
-                                      Z"/>
-                            </Viewbox>
+                                      Margin="12">
 
-                            <Grid Margin="50">
+                                    <Path.Effect>
+                                        <DropShadowEffect Color="#000000"
+                                                          BlurRadius="28"
+                                                          ShadowDepth="5"
+                                                          Opacity="0.22"/>
+                                    </Path.Effect>
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                                    <Path.Data>
+                                        <PathGeometry>
+                                            <PathFigure StartPoint="0,0" IsClosed="True">
 
-                                <StackPanel Grid.Row="0">
-                                    <TextBlock Text="Product Details"
-                                               FontSize="22"
-                                               FontWeight="Bold"
-                                               Foreground="{DynamicResource PrimaryTextBrush}"/>
+                                                <BezierSegment Point1="20,0" Point2="20,0" Point3="30,0"/>
 
-                                    <Border Height="2"
-                                            Margin="0,12,0,0"
-                                            Background="{DynamicResource DividerBrush}"/>
-                                </StackPanel>
+                                                <LineSegment Point="260,0"/>
 
-                                <TextBlock Grid.Row="1"
-                                           Margin="0,20,0,0"
-                                           Text="{Binding ProductDescription,
-                                                  RelativeSource={RelativeSource TemplatedParent}}"
-                                           FontSize="14"
-                                           Foreground="{DynamicResource SecondaryTextBrush}"
-                                           TextWrapping="Wrap"/>
+                                                <BezierSegment Point1="520,0"
+                                                               Point2="360,5"
+                                                               Point3="320,60"/>
 
-                                <ItemsControl Grid.Row="2"
-                                              Margin="0,20,0,0"
-                                              ItemsSource="{Binding ProductFeatures,
-                                                            RelativeSource={RelativeSource TemplatedParent}}">
+                                                <BezierSegment Point1="280,120"
+                                                               Point2="360,300"
+                                                               Point3="90,360"/>
 
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
-                                                <Ellipse Width="8"
-                                                         Height="8"
-                                                         Fill="{DynamicResource InStockBrush}"
-                                                         Margin="0,0,10,0"
-                                                         VerticalAlignment="Center"/>
+                                                <LineSegment Point="0,360"/>
 
-                                                <TextBlock Text="{Binding}"
-                                                           FontSize="14"
-                                                           Foreground="{DynamicResource SecondaryTextBrush}"
-                                                           VerticalAlignment="Center"
-                                                           TextWrapping="Wrap"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
+                                                <LineSegment Point="0,0"/>
 
-                                </ItemsControl>
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </Path.Data>
 
-                                <Button Grid.Row="3"
-                                        Content="Buy Now"
-                                        Height="45"
-                                        Margin="0,30,0,0"
-                                        Background="{DynamicResource BuyNowButtonBrush}"
-                                        Foreground="White"
-                                        FontWeight="Bold"
-                                        HorizontalAlignment="Left"
-                                        Width="150"
-                                        helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,
-                                                                          RelativeSource={RelativeSource AncestorType=Control}}">
+                                </Path>
 
-                                    <Button.Template>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border CornerRadius="25"
-                                                    Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center"
-                                                                  VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Button.Template>
+                                <Grid Margin="50">
 
-                                </Button>
+                                    <Grid.Clip>
+                                        <PathGeometry>
+                                            <PathFigure StartPoint="0,0" IsClosed="True">
+
+                                                <BezierSegment Point1="20,0" Point2="20,0" Point3="30,0"/>
+
+                                                <LineSegment Point="260,0"/>
+
+                                                <BezierSegment Point1="520,0"
+                                       Point2="360,5"
+                                       Point3="320,60"/>
+
+                                                <BezierSegment Point1="280,120"
+                                       Point2="360,300"
+                                       Point3="90,360"/>
+
+                                                <LineSegment Point="0,360"/>
+
+                                                <LineSegment Point="0,0"/>
+
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </Grid.Clip>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Title -->
+                                    <StackPanel Grid.Row="0">
+                                        <TextBlock Text="Product Details"
+                                                   FontSize="22"
+                                                   FontWeight="Bold"
+                                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                                        <Border Height="2"
+                                                Margin="0,12,0,0"
+                                                Background="{DynamicResource DividerBrush}"/>
+                                    </StackPanel>
+
+                                    <!-- Description -->
+                                    <TextBlock Grid.Row="1"
+                                               Margin="0,20,0,0"
+                                               Text="{Binding ProductDescription,
+                                                      RelativeSource={RelativeSource TemplatedParent}}"
+                                               FontSize="14"
+                                               Foreground="{DynamicResource SecondaryTextBrush}"
+                                               TextWrapping="Wrap"/>
+
+                                    <!-- Features -->
+                                    <ItemsControl Grid.Row="2"
+                                                  Margin="0,20,0,0"
+                                                  ItemsSource="{Binding ProductFeatures,
+                                                                RelativeSource={RelativeSource TemplatedParent}}">
+
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                                    <Ellipse Width="8"
+                                     Height="8"
+                                     Fill="{DynamicResource InStockBrush}"
+                                     Margin="0,0,10,0"
+                                     VerticalAlignment="Center"/>
+
+                                                    <TextBlock Text="{Binding}"
+                                       FontSize="14"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+
+                                    <!-- Buy Button -->
+                                    <Button Grid.Row="3"
+                                            Content="Buy Now"
+                                            Height="45"
+                                            Margin="0,30,0,0"
+                                            Background="{DynamicResource BuyNowButtonBrush}"
+                                            Foreground="White"
+                                            FontWeight="Bold"
+                                            HorizontalAlignment="Left"
+                                            Width="150"
+                                            helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,
+                                                                              RelativeSource={RelativeSource AncestorType=Control}}">
+
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="25"
+                                                         Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+
+                                    </Button>
+
+                                </Grid>
 
                             </Grid>
 

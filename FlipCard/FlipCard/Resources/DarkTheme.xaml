@@ -33,7 +33,7 @@
     <SolidColorBrush x:Key="OutOfStockBrush" Color="#f87171"/>
 
 
-    <SolidColorBrush x:Key="BackOuterBrush" Color="#0f172a"/>
+    <SolidColorBrush x:Key="BackOuterBrush" Color="#64748B"/>
     <SolidColorBrush x:Key="BackInnerBrush" Color="#1e293b"/>
     <SolidColorBrush x:Key="BackContentBrush" Color="#1e293b"/>
 
