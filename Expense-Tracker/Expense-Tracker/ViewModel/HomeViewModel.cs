@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Expense_Tracker.ViewModel
 {
-    class HomeViewModel
+    public class HomeViewModel
     {
+        private MainViewModel _mainViewModel;
+        public HomeViewModel(MainViewModel mainViewModel)
+        {
+            _mainViewModel = mainViewModel;
+        }
     }
 }

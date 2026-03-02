@@ -20,6 +20,9 @@
             <view:SignupPage/>
         </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+                <view:HomePage/>
+            </DataTemplate>
 
         </ResourceDictionary>
 

@@ -63,6 +63,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\ProductDisplayCard.cs" />
+    <Compile Include="Controls\StarHighlightConverter.cs" />
     <Compile Include="Helper\HighLightHelper.cs" />
     <Compile Include="Helper\StartHelper.cs" />
     <Compile Include="Helper\StockHelper.cs" />

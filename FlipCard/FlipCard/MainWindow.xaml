@@ -18,6 +18,8 @@
     RatingCount="3595"
     IsPriceIncreased="False"
     IsOutOfStock="False"
+    Width="380"
+    Height="450"
 
     ProductDescription="Experience the future of health monitoring with advanced sensors, seamless connectivity, and a stunning Always-On Retina display. Designed for fitness, health tracking, and everyday productivity.">
 

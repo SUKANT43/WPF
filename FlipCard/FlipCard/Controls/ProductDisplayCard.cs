@@ -174,10 +174,25 @@ namespace FlipCard.Controls
                 likeButton.Click += LikeButton_Click;
             }
 
+            AddHandler(TextBlock.MouseLeftButtonDownEvent,
+                new MouseButtonEventHandler(Star_MouseLeftButtonDown),
+                true);
 
-            this.MouseLeftButtonUp -= Card_MouseLeftButtonUp;
-            this.MouseLeftButtonUp += Card_MouseLeftButtonUp;
+            if (GetTemplateChild("RootGrid") is Grid rootGrid)
+            {
+                this.MouseLeftButtonUp -= Card_MouseLeftButtonUp;
+                this.MouseLeftButtonUp += Card_MouseLeftButtonUp;
+            }
+        }
 
+        private void Star_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.OriginalSource is TextBlock tb&& 
+                int.TryParse(tb.DataContext?.ToString(),out int starValue))
+            {
+                Rating = starValue;
+                e.Handled = true;
+            }
         }
 
         private void Card_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -230,13 +245,32 @@ namespace FlipCard.Controls
                 nameof(IsFlipped),
                 typeof(bool),
                 typeof(ProductDisplayCard),
-                new PropertyMetadata(false));
+                new PropertyMetadata(false)
+                );
+                
 
         public bool IsFlipped
         {
             get => (bool)GetValue(IsFlippedProperty);
             set => SetValue(IsFlippedProperty, value);
         }
+
+        public List<int> StarItems { get; } = new List<int> { 1, 2, 3, 4, 5 };
+
+        public int Rating
+        {
+            get => (int)GetValue(RatingProperty);
+            set => SetValue(RatingProperty, value);
+        }
+
+        public static readonly DependencyProperty RatingProperty =
+            DependencyProperty.Register(
+                nameof(Rating),
+                typeof(int),
+                typeof(ProductDisplayCard),
+                new PropertyMetadata(0)
+                );
+
 
     }
 }
