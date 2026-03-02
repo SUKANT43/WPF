@@ -34,14 +34,14 @@ namespace FlipCard.Helper
                 textBlock.SetCurrentValue(
                     TextBlock.ForegroundProperty,
                     isOut ? Brushes.Red : Brushes.Green);
-                textBlock.Text = isOut ? "Out of Stock" : "In Stock";
+                textBlock.Text = isOut ? "Out of Stock" : "";
             }
 
             if (d is Border border)
             {
                 border.SetCurrentValue(
                     Border.BackgroundProperty,
-                    isOut ? Brushes.Red : Brushes.Green);
+                    isOut ? Brushes.Red : Brushes.Transparent);
             }
 
             if(d is Button button)

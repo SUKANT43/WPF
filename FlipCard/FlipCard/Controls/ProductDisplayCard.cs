@@ -198,7 +198,7 @@ namespace FlipCard.Controls
 
         private void Card_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (e.OriginalSource is Button ||e.OriginalSource is TextBlock)
+            if (e.OriginalSource is Button || e.OriginalSource is TextBlock)
                 return;
 
             IsFlipped = !IsFlipped;

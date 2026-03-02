@@ -16,8 +16,17 @@
                     <Grid x:Name="RootGrid" RenderTransformOrigin="0.5,0.5">
 
                         <Grid.RenderTransform>
-                            <ScaleTransform x:Name="FlipScale" ScaleX="1"/>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="FlipScale"
+                                                ScaleX="1"
+                                                ScaleY="1"/>
+
+                                <ScaleTransform x:Name="HoverScale"
+                                                ScaleX="1"
+                                                ScaleY="1"/>        
+                            </TransformGroup>
                         </Grid.RenderTransform>
+
 
                         <!-- FRONT SIDE -->
                         <Border x:Name="FrontCard"
@@ -218,7 +227,6 @@
                                     <Border CornerRadius="100"
                                             Width="8"
                                             Height="8"
-                                            Background="{DynamicResource InStockBrush}"
                                             helper:StockHelper.IsOutOfStock="{Binding IsOutOfStock,
                                                                               RelativeSource={RelativeSource AncestorType=Control}}"/>
 
@@ -391,6 +399,39 @@
                         <Trigger Property="IsFlipped" Value="False">
                             <Setter TargetName="FrontCard" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="BackCard" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1.05"
+                                                         Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="HoverScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="1.05"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="HoverScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
