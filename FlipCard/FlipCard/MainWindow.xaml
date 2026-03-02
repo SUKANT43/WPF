@@ -5,33 +5,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlipCard"
+        xmlns:control="clr-namespace:FlipCard.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        xmlns:control="clr-namespace:FlipCard.Controls">
-    <Grid Background="#1f2b43">
-        <control:ProductDisplayCard 
-    ProductName="Apple Watch Series 7 Steel  jui kh hh h uih uih uh h  h"
-    ImageSource="FlipCard;component/Image/apple.png"
-    OfferedPrice="299"
-    OriginalPrice="39999"
-    HorizontalAlignment="Left"
-    RatingCount="3595"
-    IsPriceIncreased="False"
-    IsOutOfStock="False"
-    Width="380"
-    Height="450"
+        Title="MainWindow"
+        Height="600"
+        Width="900"
+        Background="{DynamicResource AppBackgroundBrush}">
 
-    ProductDescription="Experience the future of health monitoring with advanced sensors, seamless connectivity, and a stunning Always-On Retina display. Designed for fitness, health tracking, and everyday productivity.">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            <control:ProductDisplayCard.ProductFeatures>
-                <sys:String>Retina Always-On Display</sys:String>
-                <sys:String>Blood Oxygen Sensor</sys:String>
-                <sys:String>ECG App Support</sys:String>
-                <sys:String>Fast Charging Capability</sys:String>
-                <sys:String>Water Resistant Design</sys:String>
-            </control:ProductDisplayCard.ProductFeatures>
+        <!-- Top Bar -->
+        <control:ThemeControl Grid.Row="0"/>
 
-        </control:ProductDisplayCard>
+        <!-- Product Card -->
 
+        <WrapPanel Grid.Row="1">
+            <control:ProductDisplayCard 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    ProductName="Apple Watch Series 7 Steel"
+                                    ImageSource="C:\Users\SEZ-A4\Desktop\Wpf\WPF\FlipCard\FlipCard\Image/apple.png"
+                                    OfferedPrice="299"
+                                    OriginalPrice="39999"
+                                    RatingCount="3595"
+                                    IsPriceIncreased="True"
+                                    IsOutOfStock="False"
+                                    Width="380"
+                                    Height="450"
+                                    ProductDescription="Experience the future of health monitoring with advanced sensors, seamless connectivity, and a stunning Always-On Retina display. Designed for fitness, health tracking, and everyday productivity.">
+
+                <control:ProductDisplayCard.ProductFeatures>
+                    <sys:String>Retina Always-On Display</sys:String>
+                    <sys:String>Blood Oxygen Sensor</sys:String>
+                    <sys:String>ECG App Support</sys:String>
+                    <sys:String>Fast Charging Capability</sys:String>
+                    <sys:String>Water Resistant Design</sys:String>
+                </control:ProductDisplayCard.ProductFeatures>
+                
+                
+
+            </control:ProductDisplayCard>
+          
+
+
+
+        </WrapPanel>
+        
     </Grid>
 </Window>

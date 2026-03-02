@@ -52,6 +52,7 @@ namespace FlipCard.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ProductDisplayCard), new FrameworkPropertyMetadata(typeof(ProductDisplayCard)));
         }
 
+
         public string ProductName
         {
             get;
@@ -136,7 +137,7 @@ namespace FlipCard.Controls
         new PropertyMetadata(false));
 
 
-       
+
 
         public string ProductDescription
         {
@@ -187,8 +188,8 @@ namespace FlipCard.Controls
 
         private void Star_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.OriginalSource is TextBlock tb&& 
-                int.TryParse(tb.DataContext?.ToString(),out int starValue))
+            if (e.OriginalSource is TextBlock tb &&
+                int.TryParse(tb.DataContext?.ToString(), out int starValue))
             {
                 Rating = starValue;
                 e.Handled = true;
@@ -197,6 +198,9 @@ namespace FlipCard.Controls
 
         private void Card_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (e.OriginalSource is Button ||e.OriginalSource is TextBlock)
+                return;
+
             IsFlipped = !IsFlipped;
         }
 
@@ -247,7 +251,7 @@ namespace FlipCard.Controls
                 typeof(ProductDisplayCard),
                 new PropertyMetadata(false)
                 );
-                
+
 
         public bool IsFlipped
         {
@@ -274,4 +278,3 @@ namespace FlipCard.Controls
 
     }
 }
-

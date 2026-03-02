@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="FlipCard.Controls.ThemeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+
+        <!-- Top Bar -->
+        <Border Height="70"
+                VerticalAlignment="Top"
+                Background="{DynamicResource TopBarBackColor}"
+                CornerRadius="0,0,15,15"
+                Padding="20">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Title -->
+                <TextBlock Text="E-Commerce Store"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                <!-- Theme Toggle Button -->
+                <Button x:Name="ThemeToggleBtn"
+                        Grid.Column="1"
+                        Width="40"
+                        Height="40"
+                        Click="ThemeToggleBtn_Click"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="20"
+                        Foreground="{DynamicResource ThemeIconBrush}"
+                        >
+                    <StackPanel>
+                        <TextBlock x:Name="themeText" Text="🌙" Margin="0 0 0 15"    Foreground="{DynamicResource ThemeIconBrush}"/>
+                    </StackPanel>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="BtnBorder"
+                                    Background="Transparent"
+                                    CornerRadius="20"
+                                    >
+
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                              
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</UserControl>
