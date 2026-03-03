@@ -9,7 +9,7 @@ using Expense_Tracker.Model;
 
 namespace Expense_Tracker.Services
 {
-    class UserService
+    public class UserService
     {
         private readonly string _folderPath = @"C:\ExpenseTracker";
 

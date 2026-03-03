@@ -28,7 +28,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     ProductName="Apple Watch Series 7 Steel"
-                                    ImageSource="C:\Users\SEZ-A4\Desktop\Wpf\WPF\FlipCard\FlipCard\Image/apple.png"
+                                    ImageSource="pack://application:,,,/FlipCard;component/Image/apple.png"
                                     OfferedPrice="299"
                                     OriginalPrice="400"
                                     RatingCount="3595"

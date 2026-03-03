@@ -269,8 +269,10 @@
 
                         <!-- BACK SIDE -->
                         <Grid x:Name="BackCard"
-                              Visibility="Collapsed">
-
+                              Visibility="Collapsed"
+                              Height="Auto"
+                              Width="Auto">
+        
                             <Grid>
 
                                 <Border Background="{DynamicResource BackOuterBrush}"
@@ -325,12 +327,12 @@
                                                 <LineSegment Point="260,0"/>
 
                                                 <BezierSegment Point1="520,0"
-                                       Point2="360,5"
-                                       Point3="320,60"/>
+                                                               Point2="360,5"
+                                                               Point3="320,60"/>
 
                                                 <BezierSegment Point1="280,120"
-                                       Point2="360,300"
-                                       Point3="90,360"/>
+                                                               Point2="360,300"
+                                                               Point3="90,360"/>            
 
                                                 <LineSegment Point="0,360"/>
 

@@ -274,7 +274,5 @@ namespace FlipCard.Controls
                 typeof(ProductDisplayCard),
                 new PropertyMetadata(0)
                 );
-
-
     }
 }
