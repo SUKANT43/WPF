@@ -1,19 +1,14 @@
 ﻿using Expense_Tracker.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Expense_Tracker.Model
 {
     public class DataModel
     {
-        public TransactionType TransactionType;
-        public double Amount;
-        public string Description;
-        public Category Category;
-        public DateTime Date;
+        public TransactionType TransactionType { get; set; }
+        public double Amount { get; set; }
+        public string Description { get; set; }
+        public Category Category { get; set; }
+        public DateTime Date { get; set; }
     }
-
 }

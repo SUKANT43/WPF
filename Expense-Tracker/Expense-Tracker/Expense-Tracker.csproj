@@ -62,6 +62,18 @@
     <Compile Include="Component\ExpenseCardComponent.xaml.cs">
       <DependentUpon>ExpenseCardComponent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Component\ExpenseInformationCard.xaml.cs">
+      <DependentUpon>ExpenseInformationCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\FilterComponent.xaml.cs">
+      <DependentUpon>FilterComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\TopBarComponent.xaml.cs">
+      <DependentUpon>TopBarComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\TransactionDetailsComponent.xaml.cs">
+      <DependentUpon>TransactionDetailsComponent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums\Category.cs" />
     <Compile Include="Enums\TransactionType.cs" />
     <Compile Include="Model\DataModel.cs" />
@@ -86,6 +98,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Component\ExpenseInformationCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Component\FilterComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Component\TopBarComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Component\TransactionDetailsComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +126,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ThemeResources\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ThemeResources\LightTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,7 +174,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Png\report.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Png\user1.png" />
   </ItemGroup>

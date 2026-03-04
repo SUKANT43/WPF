@@ -1,15 +1,17 @@
 ﻿<UserControl x:Class="Expense_Tracker.Component.ExpenseCardComponent"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Background="#F3F4F6">
+             Background="{DynamicResource AppBackgroundBrush}">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid HorizontalAlignment="Center">
 
         <!-- Card -->
         <Border Width="360"
                 Padding="20"
                 CornerRadius="12"
-                Background="White">
+                Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}"
+                BorderThickness="1">
 
             <StackPanel>
 
@@ -17,104 +19,109 @@
                 <StackPanel Margin="0,0,0,15">
                     <TextBlock Text="⊕ Add Transaction"
                                FontSize="18"
-                               FontWeight="SemiBold"/>
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                     <TextBlock Text="Record a new income or expense"
-                               Foreground="#6B7280"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
                                FontSize="14"/>
                 </StackPanel>
-
 
                 <!-- Transaction Type -->
                 <TextBlock Text="Transaction Type"
                            FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"
                            Margin="0,5"/>
 
                 <ComboBox Height="35"
                           ItemsSource="{Binding TransactionTypes}"
                           SelectedItem="{Binding SelectedTransactionType}"
-                          Background="#F3F4F6"
-                          BorderThickness="0"
+                          Background="{DynamicResource InputBackgroundBrush}"
+                          BorderBrush="{DynamicResource BorderBrushColor}"
+                          BorderThickness="1"
                           Padding="8"
-                          Margin="0,5,0,10"/>               
-
+                          Margin="0,5,0,10"/>
 
                 <!-- Amount -->
                 <TextBlock Text="Amount ($)"
-                           FontWeight="SemiBold"/>
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                 <TextBox Height="35"
-                         Background="#F3F4F6"
-                         BorderThickness="0"
+                         Background="{DynamicResource InputBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrushColor}"
+                         BorderThickness="1"
                          Padding="8"
                          Margin="0,5,0,10"
-                         Text="0.00"/>
-
+                         Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!-- Description -->
                 <TextBlock Text="Description"
-                           FontWeight="SemiBold"/>
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                 <TextBox Height="35"
-                         Background="#F3F4F6"
-                         BorderThickness="0"
+                         Background="{DynamicResource InputBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrushColor}"
+                         BorderThickness="1"
                          Padding="8"
-                         Margin="0,5,0,10"/>
-
+                         Margin="0,5,0,10"
+                         Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!-- Category -->
                 <TextBlock Text="Category"
-                           FontWeight="SemiBold"/>
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                 <ComboBox Height="35"
                           ItemsSource="{Binding Categories}"
                           SelectedItem="{Binding SelectedCategory}"
-                          Background="#F3F4F6"
-                          BorderThickness="0"
+                          Background="{DynamicResource InputBackgroundBrush}"
+                          BorderBrush="{DynamicResource BorderBrushColor}"
+                          BorderThickness="1"
                           Padding="8"
-                          Margin="0,5,0,10"/>       
-
+                          Margin="0,5,0,10"/>
 
                 <!-- Date -->
                 <TextBlock Text="Date"
-                           FontWeight="SemiBold"/>
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                 <DatePicker Height="35"
-                            Background="#F3F4F6"
-                            BorderThickness="0"
+                            SelectedDate="{Binding Date}"
+                            Background="{DynamicResource InputBackgroundBrush}"
+                            BorderBrush="{DynamicResource BorderBrushColor}"
+                            BorderThickness="1"
                             Margin="0,5,0,15"/>
-
 
                 <!-- Button -->
                 <Button Content="Add Transaction"
                         Height="40"
                         FontWeight="SemiBold"
-                        Background="#020617"
-                        Foreground="White"
+                        Background="{DynamicResource PrimaryButtonBrush}"
+                        Foreground="{DynamicResource PrimaryButtonTextBrush}"
                         BorderThickness="0"
-                        Cursor="Hand">
+                        Cursor="Hand"
+                        Command="{Binding AddTransactionCommand}">
+
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-
                             <Border x:Name="border"
-                    CornerRadius="20"
-                    Background="{TemplateBinding Background}"
-                    Padding="10">
-
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}"
+                                    Padding="10">
                                 <ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"/>
+                                                  VerticalAlignment="Center"/>
                             </Border>
-
-                          
-
                         </ControlTemplate>
                     </Button.Template>
+
                 </Button>
-                        
 
             </StackPanel>
 
         </Border>
 
     </Grid>
+
 </UserControl>

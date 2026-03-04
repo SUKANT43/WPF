@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Expense_Tracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        MinHeight="700">
+        Title="Expense Tracker"
+        Height="450"
+        Width="800"
+        MinHeight="700"
+        Background="{DynamicResource AppBackgroundBrush}">
+
     <Grid>
-        <!--<Frame
-            x:Name="MainFrame"
-            NavigationUIVisibility="Hidden"/>-->
-        <ContentControl Content="{Binding CurrentView}"/>
+        <ContentControl Content="{Binding CurrentView}" />
     </Grid>
+
 </Window>

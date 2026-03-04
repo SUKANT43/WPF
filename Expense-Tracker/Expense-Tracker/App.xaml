@@ -24,6 +24,14 @@
                 <view:HomePage/>
             </DataTemplate>
 
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="ThemeResources/LightTheme.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+
+
         </ResourceDictionary>
 
     </Application.Resources>
