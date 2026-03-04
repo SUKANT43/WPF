@@ -19,7 +19,7 @@ namespace Expense_Tracker.ViewModel
 
         public MainViewModel()
         {
-            CurrentView = new LoginViewModel(this);
+            CurrentView = new HomeViewModel(this);
         }
     }
 }

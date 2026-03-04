@@ -130,7 +130,7 @@ namespace FlipCard.Controls
         }
 
         public static readonly DependencyProperty IsOutOfStockProperty =
-    DependencyProperty.Register(
+         DependencyProperty.Register(
         nameof(IsOutOfStock),
         typeof(bool),
         typeof(ProductDisplayCard),

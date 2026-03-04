@@ -1,0 +1,92 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MultiConvertorClass.Controller">
+
+    <local:StarFillConverter x:Key="StarFillConverter"/>
+
+    <Style TargetType="{x:Type local:RatingControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RatingControl}">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <!-- STAR 1 -->
+                        <Button Tag="1"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontSize="30"
+                                Content="★">
+                            <Button.Foreground>
+                                <MultiBinding Converter="{StaticResource StarFillConverter}">
+                                    <Binding Source="1"/>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Rating"/>
+                                </MultiBinding>
+                            </Button.Foreground>
+                        </Button>
+
+                        <!-- STAR 2 -->
+                        <Button Tag="2"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontSize="30"
+                                Content="★">
+                            <Button.Foreground>
+                                <MultiBinding Converter="{StaticResource StarFillConverter}">
+                                    <Binding Source="2"/>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Rating"/>
+                                </MultiBinding>
+                            </Button.Foreground>
+                        </Button>
+
+                        <!-- STAR 3 -->
+                        <Button Tag="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontSize="30"
+                                Content="★">
+                            <Button.Foreground>
+                                <MultiBinding Converter="{StaticResource StarFillConverter}">
+                                    <Binding Source="3"/>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Rating"/>
+                                </MultiBinding>
+                            </Button.Foreground>
+                        </Button>
+
+                        <!-- STAR 4 -->
+                        <Button Tag="4"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontSize="30"
+                                Content="★">
+                            <Button.Foreground>
+                                <MultiBinding Converter="{StaticResource StarFillConverter}">
+                                    <Binding Source="4"/>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Rating"/>
+                                </MultiBinding>
+                            </Button.Foreground>
+                        </Button>
+
+                        <!-- STAR 5 -->
+                        <Button Tag="5"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontSize="30"
+                                Content="★">
+                            <Button.Foreground>
+                                <MultiBinding Converter="{StaticResource StarFillConverter}">
+                                    <Binding Source="5"/>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Rating"/>
+                                </MultiBinding>
+                            </Button.Foreground>
+                        </Button>
+
+                    </StackPanel>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

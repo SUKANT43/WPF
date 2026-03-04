@@ -1,4 +1,6 @@
 ﻿using Expense_Tracker.Base;
+using Expense_Tracker.Services;
+using Expense_Tracker.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,8 +69,20 @@ namespace Expense_Tracker.ViewModel
             {
                 return;
             }
+
+            var result = UserService.LoginUser(Email, Password);
+
+            if (!result.IsSuccess)
+            {
+                ErrorMessage = result.Message;
+                return;
+            }
+
+            UserSession.CurrentUser = result.User;
+
             ErrorMessage = "Account login successfully!";
-            _mainViewModel.CurrentView = new SignUpViewModel(_mainViewModel);
+
+            _mainViewModel.CurrentView=new HomeViewModel(_mainViewModel);
         }
 
         private bool Validate()

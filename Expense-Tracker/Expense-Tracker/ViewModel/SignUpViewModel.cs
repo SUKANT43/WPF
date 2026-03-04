@@ -15,14 +15,12 @@ namespace Expense_Tracker.ViewModel
     public class SignUpViewModel : Observable
     {
         private readonly MainViewModel _mainViewModel;
-        private UserService _userService;
         public ICommand GoToLoginCommand { get; }
         public ICommand RegisterCommand { get; }
 
         public SignUpViewModel(MainViewModel mainViewModel)
         {
             ErrorMessage = "";
-            _userService = new UserService();
             _mainViewModel = mainViewModel;
             RegisterCommand = new RelayCommand(o=>Register());
             GoToLoginCommand = new RelayCommand(o =>
@@ -100,7 +98,7 @@ namespace Expense_Tracker.ViewModel
                 return;
             }
 
-            if (_userService.UserExists(Email))
+            if (UserService.UserExists(Email))
             {
                 ErrorMessage = "Email already registered.";
                 return;
@@ -113,7 +111,7 @@ namespace Expense_Tracker.ViewModel
                 Password = Password
             };
 
-            _userService.SaveUser(user);
+            UserService.SaveUser(user);
 
 
             ErrorMessage = "Account created successfully!";

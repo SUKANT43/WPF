@@ -9,11 +9,11 @@ using Expense_Tracker.Model;
 
 namespace Expense_Tracker.Services
 {
-    public class UserService
+    public static class UserService
     {
-        private readonly string _folderPath = @"C:\ExpenseTracker";
+        private static readonly string _folderPath = @"C:\ExpenseTracker";
 
-        public UserService()
+        static UserService()
         {
             if (!Directory.Exists(_folderPath))
             {
@@ -21,27 +21,27 @@ namespace Expense_Tracker.Services
             }
         }
 
-        private string GetFilePath(string email)
+        private static string GetFilePath(string email)
         {
             string safeEmail = email.Replace("@", "_at_").Replace(".", "_");
             return Path.Combine(_folderPath, safeEmail + ".json");
         }
 
-        public bool UserExists(string email)
+        public static bool UserExists(string email)
         {
             string path = GetFilePath(email);
             return File.Exists(path);
         }
 
 
-        public void SaveUser(UserModel user)
+        public static void SaveUser(UserModel user)
         {
             string path = GetFilePath(user.Email);
             string json = JsonConvert.SerializeObject(user, Formatting.Indented);
             File.WriteAllText(path, json);
         }
 
-        public UserModel GetUser(string email)
+        public static UserModel GetUser(string email)
         {
             string path = GetFilePath(email);
             if (!File.Exists(path))
@@ -49,7 +49,36 @@ namespace Expense_Tracker.Services
 
             string json = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<UserModel>(json);
+        }
 
+        public static LoginResult LoginUser(string email, string password)
+        {
+            if (!UserExists(email))
+            {
+                return new LoginResult
+                {
+                    IsSuccess = false,
+                    Message = "User does not exist. Please register first."
+                };
+            }
+
+            UserModel user = GetUser(email);
+
+            if (user.Password != password)
+            {
+                return new LoginResult
+                {
+                    IsSuccess = false,
+                    Message = "Invalid password."
+                };
+            }
+
+            return new LoginResult
+            {
+                IsSuccess = true,
+                Message = "Login successful",
+                User = user
+            };
         }
     }
 }

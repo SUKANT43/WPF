@@ -59,11 +59,16 @@
     </ApplicationDefinition>
     <Compile Include="Base\Observable.cs" />
     <Compile Include="Base\RelayCommand.cs" />
+    <Compile Include="Component\ExpenseCardComponent.xaml.cs">
+      <DependentUpon>ExpenseCardComponent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums\Category.cs" />
     <Compile Include="Enums\TransactionType.cs" />
     <Compile Include="Model\DataModel.cs" />
+    <Compile Include="Model\LoginResult.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Session\UserSession.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -77,6 +82,10 @@
     <Compile Include="View\SignupPage.xaml.cs">
       <DependentUpon>SignupPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Component\ExpenseCardComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

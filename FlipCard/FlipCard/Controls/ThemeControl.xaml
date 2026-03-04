@@ -28,8 +28,8 @@
                 <!-- Theme Toggle Button -->
                 <Button x:Name="ThemeToggleBtn"
                         Grid.Column="1"
-                        Width="200"
-                        Height="40"
+                        Width="40"
+                        Height="30"
                         Click="ThemeToggleBtn_Click"
                         Cursor="Hand"
                         Background="Transparent"

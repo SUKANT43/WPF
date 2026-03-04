@@ -16,6 +16,7 @@ namespace FlipCard.Controls
             int rating = (int)values[1];
 
             return starNumber <= rating ? Brushes.Gold : Brushes.Gray;
+
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
@@ -24,3 +25,4 @@ namespace FlipCard.Controls
         }
     }
 }
+
