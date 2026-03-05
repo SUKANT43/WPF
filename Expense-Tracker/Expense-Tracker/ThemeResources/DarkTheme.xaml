@@ -19,5 +19,14 @@
     <SolidColorBrush x:Key="UserProfileBackGround" Color="#2563eb"/>
     <SolidColorBrush x:Key="UserProfileForeGround" Color="White"/>
 
+    <SolidColorBrush x:Key="IncomeIconBackgroundBrush" Color="#064E3B"/>
+    <SolidColorBrush x:Key="IncomeIconBrush" Color="#34D399"/>
+
+    <SolidColorBrush x:Key="CategoryBackgroundBrush" Color="#334155"/>
+    <SolidColorBrush x:Key="CategoryTextBrush" Color="#E2E8F0"/>
+
+    <SolidColorBrush x:Key="IncomeAmountBrush" Color="#22C55E"/>
+    <SolidColorBrush x:Key="DangerBrush" Color="#EF4444"/>
+
 
 </ResourceDictionary>

@@ -40,10 +40,17 @@
                                FontWeight="Bold"
                                FontSize="14"
                                Foreground="{DynamicResource PrimaryTextBrush}"/>
-
-                    <TextBlock Text="Welcome back, sukant"
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Welcome back, "
                                Foreground="{DynamicResource SecondaryTextBrush}"
                                FontSize="11"/>
+                        <TextBlock Text="{Binding Name ,UpdateSourceTrigger=Default}"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               FontSize="11"/>
+                    </StackPanel>
+
+                    
                 </StackPanel>
 
             </StackPanel>
@@ -119,7 +126,7 @@
                         Background="{DynamicResource UserProfileBackGround}"
                         Margin="10,0,0,0">
 
-                    <TextBlock Text="S"
+                    <TextBlock Text="{Binding ProfileLetter}"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
