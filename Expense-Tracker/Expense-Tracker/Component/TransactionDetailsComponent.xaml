@@ -21,70 +21,175 @@
                     Width="42"
                     Height="42"
                     CornerRadius="100"
-                    Background="{DynamicResource IncomeIconBackgroundBrush}"
                     VerticalAlignment="Center">
 
-                <TextBlock Text="↗"
-                           FontSize="20"
-                           Foreground="{DynamicResource IncomeIconBrush}"
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#DBFCE7"/>
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Type, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                         Value="Expense">
+                                <Setter Property="Background" Value="#FEE2E2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+
+                <TextBlock FontSize="20"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center">
+
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+
+                            <Setter Property="Text" Value="↗"/>
+                            <Setter Property="Foreground" Value="#16A34A"/>
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Type, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                             Value="Expense">
+                                    <Setter Property="Text" Value="↘"/>
+                                    <Setter Property="Foreground" Value="#DC2626"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </TextBlock.Style>
+
+                </TextBlock>
+
             </Border>
 
-            <!-- TRANSACTION DETAILS -->
+            <!-- DESCRIPTION + DATE + CATEGORY -->
             <StackPanel Grid.Column="1"
                         Margin="12,0"
                         VerticalAlignment="Center">
 
                 <StackPanel Orientation="Horizontal">
 
-                    <TextBlock Text="We"
+                    <!-- DESCRIPTION -->
+                    <TextBlock Text="{Binding Description, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                FontWeight="SemiBold"
                                FontSize="14"
                                Foreground="{DynamicResource PrimaryTextBrush}"
+                               MaxWidth="180"
+                               TextTrimming="CharacterEllipsis"
                                Margin="0,0,10,0"/>
 
+                    <!-- CATEGORY BADGE -->
                     <Border Background="{DynamicResource CategoryBackgroundBrush}"
                             CornerRadius="8"
                             Padding="6,2">
 
-                        <TextBlock Text="Salary"
+                        <TextBlock Text="{Binding CategoryType, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    FontSize="12"
                                    Foreground="{DynamicResource CategoryTextBrush}"/>
+
                     </Border>
 
                 </StackPanel>
 
-                <TextBlock Text="2/24/2026"
+                <!-- DATE -->
+                <TextBlock Text="{Binding ExpenseDate, RelativeSource={RelativeSource AncestorType=UserControl}, StringFormat={}{0:dd/MM/yyyy}}"
                            FontSize="12"
                            Foreground="{DynamicResource SecondaryTextBrush}"/>
 
             </StackPanel>
 
-            <!-- ACTION AREA -->
+            <!-- AMOUNT -->
             <StackPanel Grid.Column="2"
-                        Orientation="Horizontal"
-                        VerticalAlignment="Center">
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+           >
 
-                <TextBlock Text="+$500"
-                           FontWeight="Bold"
-                           Foreground="{DynamicResource IncomeAmountBrush}"
-                           VerticalAlignment="Center"
-                           Margin="0,0,10,0"/>
+                <!-- Amount -->
+                <TextBlock FontWeight="Bold"
+               VerticalAlignment="Center"
+               Margin="0,0,8,0">
 
-                <Button Background="Transparent"
-                        BorderThickness="0"
-                        Cursor="Hand">
-                    <TextBlock Text="✏" FontSize="16"
-                               Foreground="{DynamicResource PrimaryTextBrush}"/>
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+
+                            <Setter Property="Foreground" Value="#16A34A"/>
+                            <Setter Property="Text">
+                                <Setter.Value>
+                                    <MultiBinding StringFormat="+{0}">
+                                        <Binding Path="Amount"
+                                     RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+
+                                <DataTrigger Binding="{Binding Type, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                 Value="Expense">
+
+                                    <Setter Property="Foreground" Value="#DC2626"/>
+
+                                    <Setter Property="Text">
+                                        <Setter.Value>
+                                            <MultiBinding StringFormat="-{0}">
+                                                <Binding Path="Amount"
+                                             RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                                            </MultiBinding>
+                                        </Setter.Value>
+                                    </Setter>
+
+                                </DataTrigger>
+
+                            </Style.Triggers>
+
+                        </Style>
+                    </TextBlock.Style>
+
+                </TextBlock>
+
+                <!-- Edit Button -->
+                <Button Command="{Binding EditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            CommandParameter="{Binding}"
+            Background="Transparent"
+            BorderThickness="0"
+            Cursor="Hand">
+
+                    <TextBlock Text="✏"
+                   FontSize="16"
+                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}"
+                                    Padding="10">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
                 </Button>
 
-                <Button Background="Transparent"
-                        BorderThickness="0"
-                        Cursor="Hand">
+                <!-- Delete Button -->
+                <Button Command="{Binding DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            CommandParameter="{Binding}"
+            Background="Transparent"
+            BorderThickness="0"
+            Cursor="Hand">
+
                     <TextBlock Text="🗑"
-                               FontSize="16"
-                               Foreground="{DynamicResource DangerBrush}"/>
+                   FontSize="16"
+                   Foreground="{DynamicResource DangerBrush}"/>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}"
+                                    Padding="10">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
                 </Button>
 
             </StackPanel>

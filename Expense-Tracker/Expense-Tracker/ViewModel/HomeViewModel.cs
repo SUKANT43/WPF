@@ -5,6 +5,7 @@ using Expense_Tracker.Services;
 using Expense_Tracker.Session;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,13 @@ namespace Expense_Tracker.ViewModel
         {
             _mainViewModel = mainViewModel;
             AddTransactionCommand = new RelayCommand(o => AddTransaction());
+
+            var user = UserSession.CurrentUser;
+
+            if (user?.History != null)
+                Transactions = new ObservableCollection<DataModel>(user.History);
+            else
+                Transactions = new ObservableCollection<DataModel>();
         }
 
         public Array TransactionTypes => Enum.GetValues(typeof(TransactionType));
@@ -130,12 +138,28 @@ namespace Expense_Tracker.ViewModel
 
             user.History.Add(data);
 
+            Transactions.Add(data);
+
             UserService.SaveUser(user);
+
             SelectedTransactionType = TransactionType.Expense;
             SelectedCategory = Category.Food;
             Amount = 0;
             Description = string.Empty;
             Date = DateTime.Today;
         }
+
+        private ObservableCollection<DataModel> _transactions;
+
+        public ObservableCollection<DataModel> Transactions
+        {
+            get => _transactions;
+            set
+            {
+                _transactions = value;
+                OnPropertyChanged();
+            }
+        }
+
     }
 }
