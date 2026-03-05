@@ -66,11 +66,13 @@
                         <DataTemplate>
 
                             <component:TransactionDetailsComponent
-                    Type="{Binding TransactionType}"
-                    Amount="{Binding Amount}"
-                    Description="{Binding Description}"
-                    CategoryType="{Binding Category}"
-                    ExpenseDate="{Binding Date}" />
+                                    Type="{Binding TransactionType}"
+                                    Amount="{Binding Amount}"
+                                    Description="{Binding Description}"
+                                    CategoryType="{Binding Category}"
+                                    ExpenseDate="{Binding Date}" 
+                                    DeleteCommand="{Binding DataContext.DeleteTransactionCommand,
+                                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>       
 
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

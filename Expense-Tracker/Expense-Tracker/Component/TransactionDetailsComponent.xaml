@@ -171,10 +171,9 @@
 
                 <!-- Delete Button -->
                 <Button Command="{Binding DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-            CommandParameter="{Binding}"
-            Background="Transparent"
-            BorderThickness="0"
-            Cursor="Hand">
+                        CommandParameter="{Binding}"
+                        Background="Transparent"
+                        BorderThickness="0">    
 
                     <TextBlock Text="🗑"
                    FontSize="16"

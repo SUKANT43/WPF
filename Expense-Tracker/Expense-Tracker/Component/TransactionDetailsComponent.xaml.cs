@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Expense_Tracker.Component
 {
@@ -99,5 +100,17 @@ namespace Expense_Tracker.Component
                 typeof(TransactionType),
                 typeof(TransactionDetailsComponent),
                 new PropertyMetadata(TransactionType.Income));
+
+        public ICommand DeleteCommand
+        {
+            get => (ICommand)GetValue(DeleteCommandProperty);
+            set => SetValue(DeleteCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty DeleteCommandProperty =
+            DependencyProperty.Register(
+                nameof(DeleteCommand),
+                typeof(ICommand),
+                typeof(TransactionDetailsComponent));
     }
 }

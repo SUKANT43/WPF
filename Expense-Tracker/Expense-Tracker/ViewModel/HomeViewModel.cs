@@ -18,11 +18,12 @@ namespace Expense_Tracker.ViewModel
     {
         private MainViewModel _mainViewModel;
         public ICommand AddTransactionCommand { get; }
+        public ICommand DeleteTransactionCommand { get; }
         public HomeViewModel(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
             AddTransactionCommand = new RelayCommand(o => AddTransaction());
-
+            DeleteTransactionCommand = new RelayCommand(DeleteTransaction);
             var user = UserSession.CurrentUser;
 
             if (user?.History != null)
@@ -158,6 +159,32 @@ namespace Expense_Tracker.ViewModel
             {
                 _transactions = value;
                 OnPropertyChanged();
+            }
+        }
+
+        private void DeleteTransaction(object obj)
+        {
+            if (obj is DataModel data)
+            {
+
+                var result = MessageBox.Show(
+                           "Are you sure you want to delete this transaction?",
+                           "Confirm Delete",
+                           MessageBoxButton.YesNo,
+                           MessageBoxImage.Warning);
+
+                if (result != MessageBoxResult.Yes)
+                    return;
+
+                var user = UserSession.CurrentUser;
+
+                if (user == null)
+                    return;
+
+                user.History.Remove(data);
+                Transactions.Remove(data);
+
+                UserService.SaveUser(user);
             }
         }
 
