@@ -134,7 +134,7 @@ namespace Expense_Tracker.ViewModel
             var data = new DataModel
             {
                 TransactionType = SelectedTransactionType,
-                Amount = (double)Amount,
+                Amount = (decimal)Amount,
                 Description = Description,
                 Category = SelectedCategory,
                 Date = Date
@@ -193,10 +193,10 @@ namespace Expense_Tracker.ViewModel
             }
         }
 
-        private double _balance;
+        private decimal _balance;
 
 
-        public double Balance
+        public decimal Balance
         {
             get => _balance;
             set
@@ -206,9 +206,9 @@ namespace Expense_Tracker.ViewModel
             }
         }
 
-        public double _expense;
+        public decimal _expense;
 
-        public double Expense
+        public decimal Expense
         {
             get => _expense;
             set
@@ -218,9 +218,9 @@ namespace Expense_Tracker.ViewModel
             }
         }
 
-        public double _income;
+        public decimal _income;
 
-        public double Income
+        public decimal Income
         {
             get => _income;
             set
