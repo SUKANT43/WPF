@@ -30,6 +30,9 @@ namespace Expense_Tracker.ViewModel
                 Transactions = new ObservableCollection<DataModel>(user.History);
             else
                 Transactions = new ObservableCollection<DataModel>();
+
+            UpdateData();
+
         }
 
         public Array TransactionTypes => Enum.GetValues(typeof(TransactionType));
@@ -142,6 +145,7 @@ namespace Expense_Tracker.ViewModel
             Transactions.Add(data);
 
             UserService.SaveUser(user);
+            UpdateData();
 
             SelectedTransactionType = TransactionType.Expense;
             SelectedCategory = Category.Food;
@@ -185,6 +189,102 @@ namespace Expense_Tracker.ViewModel
                 Transactions.Remove(data);
 
                 UserService.SaveUser(user);
+                UpdateData();
+            }
+        }
+
+        private double _balance;
+
+
+        public double Balance
+        {
+            get => _balance;
+            set
+            {
+                _balance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double _expense;
+
+        public double Expense
+        {
+            get => _expense;
+            set
+            {
+                _expense = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double _income;
+
+        public double Income
+        {
+            get => _income;
+            set
+            {
+                _income = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _numberOfIncome;
+
+        public int NumberOfIncome
+        {
+            get => _numberOfIncome;
+            set
+            {
+                _numberOfIncome = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _numberOfExpense;
+
+        public int NumberOfExpense
+        {
+            get => _numberOfExpense;
+            set
+            {
+                _numberOfExpense = value;
+                OnPropertyChanged();
+
+            }
+        }
+
+        private void UpdateData()
+        {
+            if (Transactions == null || Transactions.Count == 0)
+            {
+                Balance = 0;
+                Income = 0;
+                Expense = 0;
+                NumberOfIncome = 0;
+                NumberOfExpense = 0;
+                return;
+            }
+
+            Income = Transactions
+                .Where(t => t.TransactionType == TransactionType.Income)
+                .Sum(t => t.Amount);
+
+            Expense = Transactions
+                .Where(t => t.TransactionType == TransactionType.Expense)
+                .Sum(t => t.Amount);
+
+            NumberOfIncome = Transactions
+                .Count(t => t.TransactionType == TransactionType.Income);
+
+            NumberOfExpense = Transactions
+                .Count(t => t.TransactionType == TransactionType.Expense);
+
+            Balance = Income - Expense;
+            if (Balance <= 0)
+            {
+                Balance = 0;
             }
         }
 

@@ -157,21 +157,20 @@
                     <TextBlock Text="Don't have an account?"
                                Foreground="#e4cdff"/>
                     <Button Content="Create one now"
-        Command="{Binding GoToSignUpCommand}"
-        Background="Transparent"
+                            Command="{Binding GoToSignUpCommand}"
+                            Background="Transparent"
                             Foreground="White"
                             FontWeight="SemiBold"
-        BorderThickness="0"
-        Cursor="Hand"
-        Padding="0"
-        Margin="3 0 0 0">
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Padding="0"
+                            Margin="3 0 0 0">   
 
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
 
                                 <Border x:Name="border"
-                    Background="{TemplateBinding Background}"
-                    >
+                                        Background="{TemplateBinding Background}">   
 
                                     <ContentPresenter HorizontalAlignment="Center"
                                   VerticalAlignment="Center"/>

@@ -32,7 +32,9 @@
         <!-- Summary Cards -->
         <component:ExpenseInformationCard Grid.Row="1"
                                           Grid.ColumnSpan="2"
-                                          Margin="0,15,0,20"/>
+                                          Margin="0,15,0,20"
+                                          
+                                         />
 
 
         <!-- Add Transaction -->

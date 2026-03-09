@@ -6,7 +6,126 @@
              xmlns:local="clr-namespace:Expense_Tracker.Component"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid RenderTransformOrigin="0.558,0.511">
+        <Grid HorizontalAlignment="Center">
+
+            <!-- Card -->
+            <Border Width="360"
+                Padding="20"
+                CornerRadius="12"
+                Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}"
+                BorderThickness="1">
+
+                <StackPanel>
+
+                    <!-- Header -->
+                    <StackPanel Margin="0,0,0,15">
+                        <TextBlock Text="⊕ Edit Transaction"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                        <TextBlock Text="Edit income or expense"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               FontSize="14"/>
+                    </StackPanel>
+
+                    <!-- Transaction Type -->
+                    <TextBlock Text="Transaction Type"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"
+                           Margin="0,5"/>
+
+                    <ComboBox Height="35"
+                          ItemsSource="{Binding TransactionTypes}"
+                          SelectedItem="{Binding SelectedTransactionType}"
+                          Background="{DynamicResource InputBackgroundBrush}"
+                          BorderBrush="{DynamicResource BorderBrushColor}"
+                          BorderThickness="1"
+                          Padding="8"
+                          Margin="0,5,0,10"/>
+
+                    <!-- Amount -->
+                    <TextBlock Text="Amount ($)"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                    <TextBox Height="35"
+                         Background="{DynamicResource InputBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrushColor}"
+                         BorderThickness="1"
+                         Padding="8"
+                         Margin="0,5,0,10"
+                         Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <!-- Description -->
+                    <TextBlock Text="Description"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                    <TextBox Height="35"
+                         Background="{DynamicResource InputBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrushColor}"
+                         BorderThickness="1"
+                         Padding="8"
+                         Margin="0,5,0,10"
+                         Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <!-- Category -->
+                    <TextBlock Text="Category"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                    <ComboBox Height="35"
+                          ItemsSource="{Binding Categories}"
+                          SelectedItem="{Binding SelectedCategory}"
+                          Background="{DynamicResource InputBackgroundBrush}"
+                          BorderBrush="{DynamicResource BorderBrushColor}"
+                          BorderThickness="1"
+                          Padding="8"
+                          Margin="0,5,0,10"/>
+
+                    <!-- Date -->
+                    <TextBlock Text="Date"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                    <DatePicker Height="35"
+                            SelectedDate="{Binding Date}"
+                            Background="{DynamicResource InputBackgroundBrush}"
+                            BorderBrush="{DynamicResource BorderBrushColor}"
+                            BorderThickness="1"
+                            Margin="0,5,0,15"/>
+
+                    <!-- Button -->
+                    <Button Content="Edit Transaction"
+                        Height="40"
+                        FontWeight="SemiBold"
+                        Background="{DynamicResource PrimaryButtonBrush}"
+                        Foreground="{DynamicResource PrimaryButtonTextBrush}"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Command="{Binding AddTransactionCommand}">
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}"
+                                    Padding="10">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
     </Grid>
 </UserControl>

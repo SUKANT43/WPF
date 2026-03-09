@@ -59,6 +59,9 @@
     </ApplicationDefinition>
     <Compile Include="Base\Observable.cs" />
     <Compile Include="Base\RelayCommand.cs" />
+    <Compile Include="Component\EditComponent.xaml.cs">
+      <DependentUpon>EditComponent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Component\ExpenseCardComponent.xaml.cs">
       <DependentUpon>ExpenseCardComponent.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
     <Compile Include="View\SignupPage.xaml.cs">
       <DependentUpon>SignupPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Component\EditComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Component\ExpenseCardComponent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
