@@ -12,17 +12,22 @@
                 <Setter Property="Foreground" Value="Black"/>
             </Style>
 
-        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
-            <view:LoginPage/>
-        </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+                <view:LoginPage/>
+            </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:SignUpViewModel}">
-            <view:SignupPage/>
-        </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SignUpViewModel}">
+                <view:SignupPage/>
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type vm:HomeViewModel}">
                 <view:HomePage/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ReportViewModel}">
+                <view:ReportPage/>
+            </DataTemplate>
+
 
 
             <ResourceDictionary.MergedDictionaries>

@@ -35,6 +35,7 @@ namespace Expense_Tracker.ViewModel
 
         }
 
+
         public Array TransactionTypes => Enum.GetValues(typeof(TransactionType));
         public Array Categories => Enum.GetValues(typeof(Category));
 
@@ -99,27 +100,6 @@ namespace Expense_Tracker.ViewModel
             }
         }
 
-        private string _name = UserSession.CurrentUser.Name;
-
-        public string Name
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_name))
-                {
-                    return "";
-                }
-
-                return _name.ToUpper();
-            }
-        }
-
-        private string _profileLetter = UserSession.CurrentUser.Name.ToUpper();
-
-        public char ProfileLetter
-        {
-            get => _profileLetter[0];
-        }
 
         private void AddTransaction()
         {

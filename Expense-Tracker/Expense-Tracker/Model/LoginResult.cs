@@ -8,7 +8,7 @@ namespace Expense_Tracker.Model
 {
     public class LoginResult
     {
-        public bool IsSuccess { get; set; }
+        public bool IsSuccess { get; set; } = false;
         public string Message { get; set; }
         public UserModel User { get; set; }
     }

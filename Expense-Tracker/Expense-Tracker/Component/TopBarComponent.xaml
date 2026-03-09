@@ -16,44 +16,63 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Left Section -->
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center">
+            <!-- Left Logo Button -->
+            <Button Background="Transparent"
+                    BorderThickness="0"
+                    Padding="0"
+                    Cursor="Hand"
+                    Command="{Binding NavigateToHomeCommand, RelativeSource={RelativeSource AncestorType=UserControl}}">
 
-                <!-- App Icon -->
-                <Border Width="36"
-                        Height="36"
-                        CornerRadius="8"
-                        Background="{DynamicResource PrimaryButtonBrush}"
-                        Margin="0,0,10,0"
-                        Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="0"
+                                Padding="0">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
 
-                    <TextBlock Text="💳"
-                               FontSize="16"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Foreground="{DynamicResource PrimaryButtonTextBrush}"/>
-                </Border>
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center">
 
-                <StackPanel>
-                    <TextBlock Text="ExpenseTracker"
-                               FontWeight="Bold"
-                               FontSize="14"
-                               Foreground="{DynamicResource PrimaryTextBrush}"/>
-                    
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Welcome back, "
-                               Foreground="{DynamicResource SecondaryTextBrush}"
-                               FontSize="11"/>
-                        <TextBlock Text="{Binding Name ,UpdateSourceTrigger=Default}"
-                               Foreground="{DynamicResource SecondaryTextBrush}"
-                               FontSize="11"/>
+                    <Border Width="36"
+                            Height="36"
+                            CornerRadius="8"
+                            Background="{DynamicResource PrimaryButtonBrush}"
+                            Margin="0,0,10,0">
+
+                        <TextBlock Text="💳"
+                                   FontSize="16"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Foreground="{DynamicResource PrimaryButtonTextBrush}"/>
+                    </Border>
+
+                    <StackPanel>
+
+                        <TextBlock Text="ExpenseTracker"
+                                   FontWeight="Bold"
+                                   FontSize="14"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Welcome back, "
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       FontSize="11"/>
+
+                            <TextBlock Text="{Binding UserName, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       FontSize="11"/>
+
+                        </StackPanel>
+
                     </StackPanel>
 
-                    
                 </StackPanel>
 
-            </StackPanel>
+            </Button>
 
 
             <!-- Right Section -->
@@ -94,15 +113,19 @@
                         BorderThickness="0"
                         Padding="12,6"
                         Cursor="Hand"
-                        Margin="10,0,0,0">
+                        Margin="10,0,0,0"
+                        Command="{Binding NavigateToReportCommand, RelativeSource={RelativeSource AncestorType=UserControl}}">
 
                     <StackPanel Orientation="Horizontal">
+
                         <TextBlock Text="📊"
                                    Margin="0,0,5,0"
                                    Foreground="{DynamicResource PrimaryTextBrush}"/>
+
                         <TextBlock Text="Reports"
                                    FontWeight="SemiBold"
                                    Foreground="{DynamicResource PrimaryTextBrush}"/>
+
                     </StackPanel>
 
                     <Button.Template>
@@ -126,11 +149,12 @@
                         Background="{DynamicResource UserProfileBackGround}"
                         Margin="10,0,0,0">
 
-                    <TextBlock Text="{Binding ProfileLetter}"
+                    <TextBlock Text="{Binding ProfileLetter, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                FontWeight="Bold"
-                               HorizontalAlignment="Center"
+                               HorizontalAlignment="Left"
                                VerticalAlignment="Center"
-                               Foreground="{DynamicResource PrimaryTextBrush}"/>
+                               Foreground="{DynamicResource PrimaryTextBrush}" Margin="16,8,0,8"/>
+
                 </Border>
 
             </StackPanel>

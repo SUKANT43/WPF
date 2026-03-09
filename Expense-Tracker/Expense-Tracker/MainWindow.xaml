@@ -3,15 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Expense_Tracker"
+        xmlns:component="clr-namespace:Expense_Tracker.Component"
         mc:Ignorable="d"
         Title="Expense Tracker"
         Height="450"
         Width="800"
         Background="{DynamicResource AppBackgroundBrush}">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </Window.Resources>
 
     <Grid>
-        <ContentControl Content="{Binding CurrentView}" />
-    </Grid>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- TopBar -->
+        <component:TopBarComponent
+            Grid.Row="0"
+            UserName="{Binding Name}"
+            ProfileLetter="{Binding ProfileLetter}"
+            NavigateToHomeCommand="{Binding NavigateToHomeCommand}"
+            NavigateToReportCommand="{Binding NavigateToReportCommand}"
+            Visibility="{Binding IsVisible, Converter={StaticResource BoolToVisibility}}"/>
+        <!-- Page Content -->
+        <ContentControl Grid.Row="1"
+                        Content="{Binding CurrentView}" />
+
+    </Grid>
 </Window>

@@ -21,30 +21,22 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
 
-        <!-- Top Bar -->
-        <component:TopBarComponent Grid.Row="0" Grid.ColumnSpan="2"/>
-
-
         <!-- Summary Cards -->
-        <component:ExpenseInformationCard Grid.Row="1"
+        <component:ExpenseInformationCard Grid.Row="0"
                                           Grid.ColumnSpan="2"
-                                          Margin="0,15,0,20"
-                                          
-                                         />
+                                          Margin="0,0,0,20"/>
 
 
         <!-- Add Transaction -->
-        <component:ExpenseCardComponent Grid.Row="2"
-                                        Grid.Column="0"
-                                        Grid.RowSpan="2"/>
+        <component:ExpenseCardComponent Grid.Row="1"
+                                        Grid.Column="0"/>
 
 
         <!-- Right Side -->
-        <Grid Grid.Row="2"
+        <Grid Grid.Row="1"
               Grid.Column="1"
               Margin="20,0,0,0">
 
@@ -59,8 +51,8 @@
 
             <!-- Transactions -->
             <ScrollViewer Grid.Row="1"
-              VerticalScrollBarVisibility="Auto"
-              HorizontalScrollBarVisibility="Disabled">
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
 
                 <ItemsControl ItemsSource="{Binding Transactions}">
 
@@ -68,13 +60,13 @@
                         <DataTemplate>
 
                             <component:TransactionDetailsComponent
-                                    Type="{Binding TransactionType}"
-                                    Amount="{Binding Amount}"
-                                    Description="{Binding Description}"
-                                    CategoryType="{Binding Category}"
-                                    ExpenseDate="{Binding Date}" 
-                                    DeleteCommand="{Binding DataContext.DeleteTransactionCommand,
-                                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>       
+                                Type="{Binding TransactionType}"
+                                Amount="{Binding Amount}"
+                                Description="{Binding Description}"
+                                CategoryType="{Binding Category}"
+                                ExpenseDate="{Binding Date}"
+                                DeleteCommand="{Binding DataContext.DeleteTransactionCommand,
+                                RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
 
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
