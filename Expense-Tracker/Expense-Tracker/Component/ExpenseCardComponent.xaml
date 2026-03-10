@@ -47,6 +47,7 @@
                            FontWeight="SemiBold"
                            Foreground="{DynamicResource PrimaryTextBrush}"/>
 
+                
                 <TextBox Height="35"
                          Background="{DynamicResource InputBackgroundBrush}"
                          BorderBrush="{DynamicResource BorderBrushColor}"

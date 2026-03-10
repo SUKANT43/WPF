@@ -19,20 +19,37 @@ namespace Expense_Tracker.ViewModel
         private MainViewModel _mainViewModel;
         public ICommand AddTransactionCommand { get; }
         public ICommand DeleteTransactionCommand { get; }
+        public ICommand ClearFilterCommand { get; }
+        private List<DataModel> _allTransactions = new List<DataModel>();
         public HomeViewModel(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
             AddTransactionCommand = new RelayCommand(o => AddTransaction());
             DeleteTransactionCommand = new RelayCommand(DeleteTransaction);
+            ClearFilterCommand = new RelayCommand(o=>ClearFilter());
             var user = UserSession.CurrentUser;
 
             if (user?.History != null)
-                Transactions = new ObservableCollection<DataModel>(user.History);
+            {
+                _allTransactions = user.History.ToList();
+                Transactions = new ObservableCollection<DataModel>(_allTransactions);
+            }
             else
+            {
                 Transactions = new ObservableCollection<DataModel>();
-
+            }
             UpdateData();
 
+        }
+
+        private void ClearFilter()
+        {
+            FromDate = null;
+            ToDate = null;
+            SelectedFilterCategory = null;
+            TransactionTypeFilterCategory = null;
+
+            Transactions = new ObservableCollection<DataModel>(_allTransactions);
         }
 
 
@@ -170,6 +187,7 @@ namespace Expense_Tracker.ViewModel
 
                 UserService.SaveUser(user);
                 UpdateData();
+                ApplyFilter();
             }
         }
 
@@ -234,6 +252,76 @@ namespace Expense_Tracker.ViewModel
 
             }
         }
+
+        private DateTime? _fromDate;
+        public DateTime? FromDate
+        {
+            get => _fromDate;
+            set
+            {
+                _fromDate = value;
+                OnPropertyChanged();
+                ApplyFilter();
+            }
+        }
+
+
+        private DateTime? _toDate;
+        public DateTime? ToDate
+        {
+            get => _toDate;
+            set
+            {
+                _toDate = value;
+                OnPropertyChanged();
+                ApplyFilter();
+            }
+        }
+
+        private Category? _selectedFilterCategory;
+        public Category? SelectedFilterCategory
+        {
+            get => _selectedFilterCategory;
+            set
+            {
+                _selectedFilterCategory = value;
+                OnPropertyChanged();
+                ApplyFilter();
+            }
+        }
+
+        private TransactionType? _transactionTypeFilterCategory;
+        public TransactionType? TransactionTypeFilterCategory
+        {
+            get => _transactionTypeFilterCategory;
+            set
+            {
+                _transactionTypeFilterCategory = value;
+                OnPropertyChanged();
+                ApplyFilter();
+            }
+        }
+
+
+        private void ApplyFilter()
+        {
+            IEnumerable<DataModel> query = _allTransactions;
+
+            if (FromDate.HasValue)
+                query = query.Where(t => t.Date >= FromDate.Value);
+
+            if (ToDate.HasValue)
+                query = query.Where(t => t.Date <= ToDate.Value);
+
+            if (TransactionTypeFilterCategory.HasValue)
+                query = query.Where(t => t.TransactionType == TransactionTypeFilterCategory.Value);
+
+            if (SelectedFilterCategory.HasValue)
+                query = query.Where(t => t.Category == SelectedFilterCategory.Value);
+
+            Transactions = new ObservableCollection<DataModel>(query);
+        }
+
 
         private void UpdateData()
         {

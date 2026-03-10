@@ -38,7 +38,8 @@
                                FontSize="12"
                                Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                    <DatePicker Height="32"/>
+                    <DatePicker Height="32"
+                                SelectedDate="{Binding FromDate, Mode=TwoWay}"/>
                 </StackPanel>
 
 
@@ -48,7 +49,8 @@
                                FontSize="12"
                                Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                    <DatePicker Height="32"/>
+                    <DatePicker Height="32"
+                                SelectedDate="{Binding ToDate, Mode=TwoWay}"/>
                 </StackPanel>
 
 
@@ -58,11 +60,9 @@
                                FontSize="12"
                                Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                    <ComboBox Height="32">
-                    <ComboBoxItem Content="All"/>
-                        <ComboBoxItem Content="Income"/>
-                        <ComboBoxItem Content="Expense"/>
-                    </ComboBox>
+                    <ComboBox Height="32"
+                              SelectedItem="{Binding TransactionTypeFilterCategory, Mode=TwoWay}"
+                              ItemsSource="{Binding TransactionTypes}"/>
                 </StackPanel>
 
 
@@ -72,19 +72,16 @@
                                FontSize="12"
                                Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                    <ComboBox Height="32">
-                        <ComboBoxItem Content="All"/>
-                        <ComboBoxItem Content="Food"/>
-                        <ComboBoxItem Content="Transport"/>
-                        <ComboBoxItem Content="Shopping"/>
-                        <ComboBoxItem Content="Bills"/>
-                    </ComboBox>
+                    <ComboBox Height="32"
+                              SelectedItem="{Binding SelectedFilterCategory, Mode=TwoWay}"
+                              ItemsSource="{Binding Categories}"/>
                 </StackPanel>
 
 
                 <!-- Clear Button -->
                 <Button Grid.Column="4"
                         Content="Clear"
+                        Command="{Binding ClearFilterCommand}"
                         Height="32"
                         Padding="15,0"
                         Background="{DynamicResource PrimaryButtonBrush}"
@@ -95,8 +92,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border"
-                                    CornerRadius="8"
+                            <Border CornerRadius="8"
                                     Background="{TemplateBinding Background}"
                                     Padding="9">
                                 <ContentPresenter HorizontalAlignment="Center"
