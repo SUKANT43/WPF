@@ -38,9 +38,7 @@
                                FontSize="12"
                                Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                    <DatePicker Height="32"
-                                Background="{DynamicResource InputBackgroundBrush}"
-                                BorderBrush="{DynamicResource BorderBrushColor}"/>
+                    <DatePicker Height="32"/>
                 </StackPanel>
 
 
@@ -50,9 +48,7 @@
                                FontSize="12"
                                Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                    <DatePicker Height="32"
-                                Background="{DynamicResource InputBackgroundBrush}"
-                                BorderBrush="{DynamicResource BorderBrushColor}"/>
+                    <DatePicker Height="32"/>
                 </StackPanel>
 
 
@@ -62,10 +58,8 @@
                                FontSize="12"
                                Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                    <ComboBox Height="32"
-                              Background="{DynamicResource InputBackgroundBrush}"
-                              BorderBrush="{DynamicResource BorderBrushColor}">
-                        <ComboBoxItem Content="All"/>
+                    <ComboBox Height="32">
+                    <ComboBoxItem Content="All"/>
                         <ComboBoxItem Content="Income"/>
                         <ComboBoxItem Content="Expense"/>
                     </ComboBox>
@@ -78,9 +72,7 @@
                                FontSize="12"
                                Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                    <ComboBox Height="32"
-                              Background="{DynamicResource InputBackgroundBrush}"
-                              BorderBrush="{DynamicResource BorderBrushColor}">
+                    <ComboBox Height="32">
                         <ComboBoxItem Content="All"/>
                         <ComboBoxItem Content="Food"/>
                         <ComboBoxItem Content="Transport"/>

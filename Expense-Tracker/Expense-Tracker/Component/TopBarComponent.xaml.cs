@@ -45,25 +45,21 @@ namespace Expense_Tracker.Component
 
         private void ThemeToggleBtn_Click(object sender, RoutedEventArgs e)
         {
-            var appResources = Application.Current.Resources.MergedDictionaries;
-            appResources.Clear();
+            var dictionaries = Application.Current.Resources.MergedDictionaries;
+
+            // assume first dictionary is the theme dictionary
+            var themeDictionary = dictionaries[0];
 
             if (_isDarkMode)
             {
-                appResources.Add(new ResourceDictionary
-                {
-                    Source = new Uri("ThemeResources/LightTheme.xaml", UriKind.Relative)
-                });
+                themeDictionary.Source = new Uri("ThemeResources/LightTheme.xaml", UriKind.Relative);
 
                 themeText.Text = "🌙";
                 themeText.Foreground = Brushes.Black;
             }
             else
             {
-                appResources.Add(new ResourceDictionary
-                {
-                    Source = new Uri("ThemeResources/DarkTheme.xaml", UriKind.Relative)
-                });
+                themeDictionary.Source = new Uri("ThemeResources/DarkTheme.xaml", UriKind.Relative);
 
                 themeText.Text = "☀";
                 themeText.Foreground = Brushes.Orange;
@@ -71,7 +67,6 @@ namespace Expense_Tracker.Component
 
             _isDarkMode = !_isDarkMode;
         }
-
         public string UserName
         {
             get { return (string)GetValue(UserNameProperty); }

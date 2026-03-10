@@ -89,9 +89,6 @@
 
                 <DatePicker Height="35"
                             SelectedDate="{Binding Date}"
-                            Background="{DynamicResource InputBackgroundBrush}"
-                            BorderBrush="{DynamicResource BorderBrushColor}"
-                            BorderThickness="1"
                             Margin="0,5,0,15"/>
 
                 <!-- Button -->

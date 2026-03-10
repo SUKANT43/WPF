@@ -1,0 +1,186 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Expense_Tracker.ThemeResources">
+
+    <!-- Toggle Button -->
+    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+
+            <Border x:Name="Border"
+                    Grid.ColumnSpan="2"
+                    Background="{DynamicResource ComboBoxBackgroundBrush}"
+                    BorderBrush="{DynamicResource ComboBoxBorderBrush}"
+                    BorderThickness="1"/>
+
+            <Border Grid.Column="0"
+                    Margin="1"
+                    Background="{DynamicResource ComboBoxBackgroundBrush}"
+                    BorderBrush="{DynamicResource ComboBoxBorderBrush}"
+                    BorderThickness="0,0,1,0"/>
+
+            <Path x:Name="Arrow"
+                  Grid.Column="1"
+                  Fill="{DynamicResource ComboBoxArrowBrush}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Border"
+                        Property="Background"
+                        Value="{DynamicResource ComboBoxHoverBrush}"/>
+            </Trigger>
+
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="Border"
+                        Property="Background"
+                        Value="{DynamicResource ComboBoxHoverBrush}"/>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Opacity" Value="0.6"/>
+                <Setter TargetName="Arrow" Property="Opacity" Value="0.6"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <!-- Editable TextBox -->
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
+        <Border x:Name="PART_ContentHost"
+                Background="{TemplateBinding Background}"
+                Focusable="False"/>
+    </ControlTemplate>
+
+
+    <!-- ComboBox Style -->
+    <Style TargetType="ComboBox">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Foreground"
+                Value="{DynamicResource PrimaryTextBrush}"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="28"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+
+                        <ToggleButton Name="ToggleButton"
+                                      Template="{StaticResource ComboBoxToggleButton}"
+                                      Focusable="False"
+                                      IsChecked="{Binding IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press"/>
+
+                        <ContentPresenter Name="ContentSite"
+                                          Margin="6,3,25,3"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          Content="{TemplateBinding SelectionBoxItem}"
+                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                          IsHitTestVisible="False"/>
+
+                        <TextBox x:Name="PART_EditableTextBox"
+                                 Template="{StaticResource ComboBoxTextBox}"
+                                 Margin="6,3,25,3"
+                                 Background="{DynamicResource ComboBoxBackgroundBrush}"
+                                 Foreground="{DynamicResource PrimaryTextBrush}"
+                                 Visibility="Hidden"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}"/>
+
+                        <Popup Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True"
+                               PopupAnimation="Slide"
+                               Focusable="False">
+
+                            <Grid MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+
+                                <Border x:Name="DropDownBorder"
+                                        Background="{DynamicResource ComboBoxBackgroundBrush}"
+                                        BorderBrush="{DynamicResource ComboBoxBorderBrush}"
+                                        BorderThickness="1"/>
+
+                                <ScrollViewer Margin="4,6,4,6">
+                                    <StackPanel IsItemsHost="True"/>
+                                </ScrollViewer>
+
+                            </Grid>
+                        </Popup>
+
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter TargetName="DropDownBorder"
+                                    Property="MinHeight"
+                                    Value="95"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEditable" Value="True">
+                            <Setter TargetName="PART_EditableTextBox"
+                                    Property="Visibility"
+                                    Value="Visible"/>
+                            <Setter TargetName="ContentSite"
+                                    Property="Visibility"
+                                    Value="Hidden"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!-- ComboBox Item -->
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Foreground"
+                Value="{DynamicResource PrimaryTextBrush}"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBoxItem">
+
+                    <Border x:Name="Border"
+                            Padding="6,3"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter TargetName="Border"
+                                    Property="Background"
+                                    Value="{DynamicResource ComboBoxHoverBrush}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

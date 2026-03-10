@@ -33,11 +33,13 @@
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="ThemeResources/LightTheme.xaml"/>
-
+                <ResourceDictionary Source="ThemeResources/CustomComboBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
 
         </ResourceDictionary>
+        
+        
 
     </Application.Resources>
     

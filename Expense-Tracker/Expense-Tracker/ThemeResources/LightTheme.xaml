@@ -28,4 +28,14 @@
     <SolidColorBrush x:Key="IncomeAmountBrush" Color="#16A34A"/>
     <SolidColorBrush x:Key="DangerBrush" Color="#DC2626"/>
 
+    <SolidColorBrush x:Key="ComboBoxBackgroundBrush" Color="#F8FAFC"/>
+    <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#CBD5F5"/>
+    <SolidColorBrush x:Key="ComboBoxHoverBrush" Color="#E2E8F0"/>
+    <SolidColorBrush x:Key="ComboBoxArrowBrush" Color="#0F172A"/>
+
+    <SolidColorBrush x:Key="DatePickerBackgroundBrush" Color="#F8FAFC"/>
+    <SolidColorBrush x:Key="DatePickerBorderBrush" Color="#CBD5E1"/>
+    <SolidColorBrush x:Key="DatePickerHoverBrush" Color="#E2E8F0"/>
+    <SolidColorBrush x:Key="DatePickerTextBrush" Color="#0F172A"/>
+    <SolidColorBrush x:Key="CalendarBackgroundBrush" Color="White"/>
 </ResourceDictionary>
