@@ -122,7 +122,7 @@ namespace Expense_Tracker.ViewModel
         }
 
         private bool IsValidEmail(string email)
-        {
+         {
             var pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, pattern);
         }

@@ -10,7 +10,6 @@
              Background="{DynamicResource AppBackgroundBrush}">
 
     <Grid Margin="20">
-
         <!-- Columns -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="360"/>
@@ -30,7 +29,9 @@
 
         <!-- Add Transaction -->
         <component:ExpenseCardComponent Grid.Row="1"
-                                        Grid.Column="0"/>
+                                        VerticalAlignment="Top"
+                                        Grid.Column="0"
+                                        Margin="0 0 0 0"/>
 
         <!-- Right Side -->
         <Grid Grid.Row="1"
@@ -54,7 +55,6 @@
 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-
                             <component:TransactionDetailsComponent
                                 Type="{Binding TransactionType}"
                                 Amount="{Binding Amount}"
@@ -63,7 +63,6 @@
                                 ExpenseDate="{Binding Date}"
                                 DeleteCommand="{Binding DataContext.DeleteTransactionCommand,
                                 RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
-
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
 

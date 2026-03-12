@@ -7,6 +7,7 @@
 
         <!-- Card -->
         <Border Width="360"
+                Height="500"
                 Padding="20"
                 CornerRadius="12"
                 Background="{DynamicResource CardBackgroundBrush}"

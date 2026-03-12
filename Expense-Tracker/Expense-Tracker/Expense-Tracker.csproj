@@ -95,6 +95,7 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Session\UserSession.cs" />
+    <Compile Include="ViewModel\EditViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
