@@ -9,46 +9,70 @@ namespace ConnectorDataTable
     public static class DataProvider
     {
 
-        public static List<CalibrationRow> BuilRows(CalibrationMeasurement data, string axis)
+        public static List<CalibrationRow> BuilRows(CalibrationMeasurement data, string axis, Dictionary<int, int> chamberPinMap)
         {
             var rows = new List<CalibrationRow>();
-            foreach (var image in data.CalibrationMeasurementCollection)
+            foreach (var image in data.CalibrationMeasurementCollection.OrderBy(x => x.Key))
             {
                 int imageId = image.Key;
+
                 var row = new CalibrationRow()
                 {
                     ImageId = imageId,
-                    Parameter = $"{axis} Measure"
+                    Parameter = axis
                 };
-                foreach (var chamber in image.Value)
+
+                foreach (var chamberInfo in chamberPinMap.OrderBy(x => x.Key))
                 {
-                    foreach (var pin in chamber.Value.CalibrationMeasurements)
+                    int chamberId = chamberInfo.Key;
+                    int maxPins = chamberInfo.Value;
+
+                    if (image.Value.ContainsKey(chamberId))
                     {
+                        var chamber = image.Value[chamberId];
 
-                        float value;
-
-                        switch (axis)
+                        for (int pinId = 1; pinId <= maxPins; pinId++)
                         {
-                            case "X":
-                                value = pin.Value.XMeasure;
-                                break;
+                            if (chamber.CalibrationMeasurements.ContainsKey(pinId))
+                            {
+                                var pin = chamber.CalibrationMeasurements[pinId];
 
-                            case "Y":
-                                value = pin.Value.YMeasure;
-                                break;
+                                float value;
 
-                            case "Z":
-                                value = pin.Value.ZMeasure;
-                                break;
+                                switch (axis)
+                                {
+                                    case "X":
+                                        value = pin.XMeasure;
+                                        break;
 
-                            default:
-                                value = 0;
-                                break;
+                                    case "Y":
+                                        value = pin.YMeasure;
+                                        break;
+
+                                    case "Z":
+                                        value = pin.ZMeasure;
+                                        break;
+
+                                    default:
+                                        value = 0;
+                                        break;
+                                }
+
+                                row.Values.Add(value);
+                            }
+                            else
+                            {
+                                row.Values.Add(0);
+                            }
                         }
-
-                        row.Values.Add(value);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < maxPins; i++)
+                            row.Values.Add(0);
                     }
                 }
+
                 rows.Add(row);
             }
             return rows;
@@ -70,10 +94,9 @@ namespace ConnectorDataTable
                                     CalibrationMeasurements=new Dictionary<int, CalibrationMeasurementData>()
                                     {
                                        { 1, new CalibrationMeasurementData() { XMeasure = 10, YMeasure = 20, ZMeasure = 30 } },
-                                       { 2, new CalibrationMeasurementData() { XMeasure = 11, YMeasure = 21, ZMeasure = 31 } },
+                                       { 2, new CalibrationMeasurementData() { XMeasure = 11 ,ZMeasure = 31 } },
                                        { 3, new CalibrationMeasurementData() { XMeasure = 12, YMeasure = 22, ZMeasure = 32 } },
                                        { 4, new CalibrationMeasurementData() { XMeasure = 13, YMeasure = 23, ZMeasure = 33 } },
-                                       { 5, new CalibrationMeasurementData() { XMeasure = 14, YMeasure = 24, ZMeasure = 34 } }
                                     }
                                 }
                             },
@@ -110,7 +133,6 @@ namespace ConnectorDataTable
                                             {
                                                 { 1, new CalibrationMeasurementData() { XMeasure = 10, YMeasure = 20, ZMeasure = 30 } },
                                                 { 2, new CalibrationMeasurementData() { XMeasure = 11, YMeasure = 21, ZMeasure = 31 } },
-                                                { 3, new CalibrationMeasurementData() { XMeasure = 12, YMeasure = 22, ZMeasure = 32 } }
                                             }
                                         }
                                 }

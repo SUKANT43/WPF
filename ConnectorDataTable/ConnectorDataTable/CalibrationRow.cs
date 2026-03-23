@@ -11,6 +11,5 @@ namespace ConnectorDataTable
         public int ImageId { get; set; }
         public string Parameter { get; set; }
         public List<float> Values { get; set; }=new List<float>();
-
     }
 }

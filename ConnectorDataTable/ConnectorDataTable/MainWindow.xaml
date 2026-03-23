@@ -50,7 +50,6 @@
         <Style x:Key="SelectedAxisButtonStyle" TargetType="Button" BasedOn="{StaticResource AxisButtonStyle}">
             <Setter Property="Background" Value="#3B82F6"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#3B82F6"/>
         </Style>
 
     </Window.Resources>
@@ -84,7 +83,7 @@
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 0 10 0">
                     <TextBlock Text="Axis: " FontSize="15" VerticalAlignment="Center"/>
-                    <Button Content="X" Click="XAxisClick" Style="{StaticResource AxisButtonStyle}" Margin="2" x:Name="xButton"/>
+                    <Button Content="X" Click="XAxisClick" Style="{StaticResource SelectedAxisButtonStyle}" Margin="2" x:Name="xButton"/>
                     <Button Content="Y" Click="YAxisClick" Style="{StaticResource AxisButtonStyle}" Margin="2" x:Name="yButton"/>
                     <Button Content="Z" Click="ZAxisClick" Style="{StaticResource AxisButtonStyle}" Margin="2" x:Name="zButton"/>
                 </StackPanel>
@@ -98,6 +97,8 @@
                Margin="10"
                Grid.Row="1">
             <DataGrid Grid.Row="1"
+                      x:Name="dataGrid"
+                      ColumnWidth="*"
                       AutoGenerateColumns="False"
                       HeadersVisibility="Column"
                       GridLinesVisibility="None"
@@ -113,6 +114,7 @@
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="FontWeight" Value="SemiBold"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
                         <Setter Property="BorderBrush" Value="#374151"/>
                         <Setter Property="BorderThickness" Value="0,0,1,0"/>
                     </Style>
@@ -132,15 +134,12 @@
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">
                         <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Padding" Value="10"/>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                     </Style>
                 </DataGrid.CellStyle>
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Image Id" Binding="{Binding ImageId}"/>
-                    <DataGridTextColumn Header="Parameter" Binding="{Binding Parameter}"/>
-                </DataGrid.Columns>
+                
                 
             </DataGrid>
         </Border>

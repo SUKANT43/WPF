@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,10 +25,13 @@ namespace ConnectorDataTable
     {
         private DataProvider.CalibrationMeasurement _data;
         public ObservableCollection<CalibrationRow> Rows { get; set; }=new ObservableCollection<CalibrationRow>();
+        private Dictionary<int, int> _chamberPinMap;
         public MainWindow()
         {
             InitializeComponent();
             _data = DataProvider.CalibrationMeasurement.GetData();
+            BuildChamberPinMap();
+            GenertateColumns();
             LoadData("X");
             DataContext = this;
         }
@@ -35,11 +39,63 @@ namespace ConnectorDataTable
         private void LoadData(string axis)
         {
             Rows.Clear();
-            var data=DataProvider.CalibrationMeasurement.GetData();
-            var result = DataProvider.BuilRows(data, axis);
+            var result = DataProvider.BuilRows(_data, axis, _chamberPinMap);
             foreach (var row in result)
             {
                 Rows.Add(row);
+            }
+        }
+
+        private void GenertateColumns()
+        {
+            dataGrid.Columns.Clear();
+            dataGrid.Columns.Add(new DataGridTextColumn
+            {
+                Header = "Image Id",
+                Binding = new Binding("ImageId")
+            });
+
+            dataGrid.Columns.Add(new DataGridTextColumn
+            {
+                Header = "Parameter",
+                Binding = new Binding("Parameter")
+            });
+
+            int columnIndex = 0;
+            foreach (var chamber in _chamberPinMap.OrderBy(x => x.Key))
+            {
+                int chamberId = chamber.Key;
+                int maxPins = chamber.Value;
+
+                for (int pinId = 1; pinId <= maxPins; pinId++)
+                {
+                    dataGrid.Columns.Add(new DataGridTextColumn
+                    {
+                        Header = $"Ch{chamberId}({pinId})",
+                        Binding = new Binding($"Values[{columnIndex}]")
+                    });
+
+                    columnIndex++;
+                }
+            }
+        }
+
+        private void BuildChamberPinMap()
+        {
+            _chamberPinMap = new Dictionary<int, int>();
+            foreach(var image in _data.CalibrationMeasurementCollection.Values)
+            {
+                foreach(var chamber in image)
+                {
+                    int chamberId = chamber.Key;
+                    int pinCount = chamber.Value.CalibrationMeasurements.Count;
+
+                    if (!_chamberPinMap.ContainsKey(chamberId))
+                        _chamberPinMap[chamberId] = pinCount;
+                    else
+                        _chamberPinMap[chamberId] =
+                            Math.Max(_chamberPinMap[chamberId], pinCount);
+                }
             }
         }
 
