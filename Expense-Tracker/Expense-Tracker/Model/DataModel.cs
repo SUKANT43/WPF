@@ -11,4 +11,5 @@ namespace Expense_Tracker.Model
         public Category Category { get; set; }
         public DateTime Date { get; set; }
     }
+
 }

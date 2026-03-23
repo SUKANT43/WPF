@@ -153,7 +153,7 @@
                                FontWeight="Bold"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
-                               Foreground="{DynamicResource PrimaryTextBrush}" Margin="16,8,0,8"/>
+                               Foreground="{DynamicResource PrimaryTextBrush}" Margin="12,8,8,8"/>
 
                 </Border>
 

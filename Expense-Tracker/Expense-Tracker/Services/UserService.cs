@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 using Expense_Tracker.Model;
+using System.Windows;
 
 namespace Expense_Tracker.Services
 {
@@ -81,6 +82,18 @@ namespace Expense_Tracker.Services
             };
         }
     }
+
+
+    public class EditData
+    {
+        DataModel SelectedData;
+
+        public EditData()
+        {
+            MessageBox.Show(SelectedData.ToString());
+        }
+    }
+
 }
 
 

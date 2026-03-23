@@ -49,6 +49,12 @@ namespace Expense_Tracker.Component
             set => SetValue(AmountProperty, value);
         }
 
+
+
+
+
+
+
         public static readonly DependencyProperty AmountProperty =
             DependencyProperty.Register(
                 nameof(Amount),

@@ -31,7 +31,8 @@
         <component:ExpenseCardComponent Grid.Row="1"
                                         VerticalAlignment="Top"
                                         Grid.Column="0"
-                                        Margin="0 0 0 0"/>
+                                        Margin="15,10,585,0" Grid.ColumnSpan="2"/>
+
 
         <!-- Right Side -->
         <Grid Grid.Row="1"
@@ -50,7 +51,6 @@
             <!-- Transactions -->
             <ScrollViewer Grid.Row="1"
                           VerticalScrollBarVisibility="Auto">
-
                 <ItemsControl ItemsSource="{Binding Transactions}">
 
                     <ItemsControl.ItemTemplate>
