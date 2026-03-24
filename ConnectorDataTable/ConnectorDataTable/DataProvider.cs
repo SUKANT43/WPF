@@ -138,6 +138,28 @@ namespace ConnectorDataTable
                                 }
                             }
                      },
+                         {3, new Dictionary<int, CalibrationMeasurementSet>()
+                            {
+                                { 1, new CalibrationMeasurementSet(5)
+                                        {
+                                            CalibrationMeasurements = new Dictionary<int, CalibrationMeasurementData>()
+                                            {
+                                                { 4, new CalibrationMeasurementData() { XMeasure = 13, YMeasure = 23, ZMeasure = 33 } },
+                                                { 5, new CalibrationMeasurementData() { XMeasure = 14, YMeasure = 24, ZMeasure = 34 } }
+                                            }
+                                        }
+                                },
+                                { 2, new CalibrationMeasurementSet(3)
+                                        {
+                                            CalibrationMeasurements = new Dictionary<int, CalibrationMeasurementData>()
+                                            {
+                                                { 1, new CalibrationMeasurementData() { XMeasure = 10, YMeasure = 20, ZMeasure = 30 } },
+                                                { 2, new CalibrationMeasurementData() { XMeasure = 11, YMeasure = 21, ZMeasure = 31 } },
+                                            }
+                                        }
+                                }
+                            }
+                     },
 
                     }
                 };
@@ -194,8 +216,6 @@ namespace ConnectorDataTable
             public float YMeasure { get; set; }
             public float ZMeasure { get; set; }
         }
-
-
 
     }
 }
