@@ -93,6 +93,7 @@
                             <TextBox Height="45"
                                      Padding="12"
                                      BorderThickness="0"
+                                     Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}"
                                      Background="Transparent"/>
                         </Border>
 
@@ -107,6 +108,7 @@
                             <TextBox Height="45"
                                      Padding="12"
                                      BorderThickness="0"
+                                     Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}"
                                      Background="Transparent"/>
                         </Border>
 
@@ -120,6 +122,7 @@
                                 CornerRadius="10"
                                 Margin="0,0,0,20">
                             <PasswordBox Height="45"
+                                         x:Name="passwordBox"
                                          Padding="12"
                                          BorderThickness="0"
                                          Background="Transparent"/>
@@ -136,6 +139,7 @@
                             <PasswordBox Height="45"
                                          Padding="12"
                                          BorderThickness="0"
+                                         x:Name="confirmPasswordBox"
                                          Background="Transparent"/>
                         </Border>
 
@@ -145,15 +149,10 @@
                         <Grid Margin="0,0,0,20">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <CheckBox Content="Remember me"/>
+                            <TextBlock Text="{Binding Message}" Foreground="Red"/>
 
-                            <TextBlock Grid.Column="1"
-                                       Text="Forgot password?"
-                                       Foreground="#14B8A6"
-                                       FontWeight="SemiBold"/>
                         </Grid>
 
                         <Button Content="Sign Up"
@@ -163,7 +162,8 @@
                                 FontWeight="SemiBold"
                                 FontSize="16"
                                 BorderThickness="0"
-                                Style="{StaticResource RoundedButton}"/>
+                                Style="{StaticResource RoundedButton}"
+                                Command="{Binding SignupCommand}"/>
                         <StackPanel Margin="0,20,0,0"
             HorizontalAlignment="Center">
                             <TextBlock FontSize="14"
@@ -171,6 +171,8 @@
                TextAlignment="Center">
         Already have an account?
         <Hyperlink 
+                                Command="{Binding GoToLoginCommand}"
+            
                    Foreground="#14B8A6">
             Sign In
         </Hyperlink>

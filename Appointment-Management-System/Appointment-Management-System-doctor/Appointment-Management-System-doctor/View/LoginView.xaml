@@ -139,6 +139,8 @@
                TextAlignment="Center">
         Don’t have an account?
         <Hyperlink 
+                                Command="{Binding GoToSignUpCommand}"
+            
                    Foreground="#14B8A6">
             Sign Up
         </Hyperlink>
@@ -149,7 +151,6 @@
                     
                 </Grid>
                 <StackPanel>
-                    <TextBlock Text="Already have an account?"/>
                 </StackPanel>
 
             </Grid>

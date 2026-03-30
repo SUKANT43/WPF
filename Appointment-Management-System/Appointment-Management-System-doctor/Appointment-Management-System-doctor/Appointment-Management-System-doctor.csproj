@@ -71,7 +71,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Base\Observable.cs" />
+    <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="Handler\DBHandler.cs" />
+    <Compile Include="Handler\EmailHandler.cs" />
+    <Compile Include="Handler\PasswordHandler.cs" />
+    <Compile Include="Model\UserModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\SignUpViewModel.cs" />
@@ -128,9 +132,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\logo.png" />
   </ItemGroup>

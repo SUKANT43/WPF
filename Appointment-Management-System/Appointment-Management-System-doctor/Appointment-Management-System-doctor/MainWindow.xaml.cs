@@ -1,4 +1,5 @@
-﻿using Appointment_Management_System_doctor.ViewModel;
+﻿using Appointment_Management_System_doctor.Handler;
+using Appointment_Management_System_doctor.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Appointment_Management_System_doctor
         public MainWindow()
         {
             InitializeComponent();
+            DBHandler db= new DBHandler();
             DataContext = new MainWindowViewModel();
         }
     }

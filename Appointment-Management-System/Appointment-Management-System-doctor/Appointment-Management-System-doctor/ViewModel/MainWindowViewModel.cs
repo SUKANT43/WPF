@@ -22,6 +22,7 @@ namespace Appointment_Management_System_doctor.ViewModel
             set
             {
                 _currentView = value;
+                OnPropertyChanged();
             }
         }
     }
