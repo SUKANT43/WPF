@@ -1,5 +1,4 @@
-﻿using Appointment_Management_System_doctor.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Appointment_Management_System_doctor
+namespace Appointment_Management_System_doctor.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SignUpView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignUpView : UserControl
     {
-        public MainWindow()
+        public SignUpView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
         }
     }
 }
