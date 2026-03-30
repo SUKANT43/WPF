@@ -96,7 +96,7 @@
                Padding="10"
                Margin="10"
                Grid.Row="1">
-            <DataGrid Grid.Row="1"
+            <DataGrid Grid.Row="1" 
                       x:Name="dataGrid"
                       ColumnWidth="*"
                       AutoGenerateColumns="False"
