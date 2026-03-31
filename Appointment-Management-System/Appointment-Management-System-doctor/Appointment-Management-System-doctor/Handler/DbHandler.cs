@@ -92,7 +92,7 @@ namespace Appointment_Management_System_doctor.Handler
         //    return new BooleanMsg(true) { Message = "Query executed" };
         //}
 
-        public static BooleanMsg<object> IsContains(string table,string columnName,string condition)
+        public static BooleanMsg<object> GetSingleData(string table,string columnName,string condition)
         {
             BooleanMsg msg = InitializeDB();
             if (!msg)

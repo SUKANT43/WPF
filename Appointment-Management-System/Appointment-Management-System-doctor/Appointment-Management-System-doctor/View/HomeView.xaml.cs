@@ -1,5 +1,4 @@
-﻿using Appointment_Management_System_doctor.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,22 +16,13 @@ using System.Windows.Shapes;
 namespace Appointment_Management_System_doctor.View
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class HomeView : UserControl
     {
-        public LoginView()
+        public HomeView()
         {
             InitializeComponent();
-            passwordBox.PasswordChanged += PasswordBoxPasswordChanged;
-        }
-
-        private void PasswordBoxPasswordChanged(object sender, RoutedEventArgs e)
-        {
-            if(DataContext is LoginViewModel vm)
-            {
-                vm.Password = passwordBox.Password;
-            }
         }
     }
 }

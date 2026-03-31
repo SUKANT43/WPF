@@ -91,6 +91,7 @@
                                 CornerRadius="10"
                                 Margin="0,0,0,20">
                             <TextBox Height="45"
+                                     Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}"
                                      Padding="12"
                                      BorderThickness="0"
                                      Background="Transparent"/>
@@ -105,6 +106,7 @@
                                 CornerRadius="10"
                                 Margin="0,0,0,20">
                             <PasswordBox Height="45"
+                                         x:Name="passwordBox"
                                          Padding="12"
                                          BorderThickness="0"
                                          Background="Transparent"/>
@@ -125,6 +127,7 @@
                         </Grid>
 
                         <Button Content="Sign In"
+                                Command="{Binding LoginCommand}"
                                 Height="50"
                                 Background="#14B8A6"
                                 Foreground="White"

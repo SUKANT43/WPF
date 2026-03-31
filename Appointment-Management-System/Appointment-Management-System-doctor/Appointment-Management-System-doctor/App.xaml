@@ -16,6 +16,12 @@
                 <view:SignUpView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+
+
+
             <Style TargetType="Button" x:Key="RoundedButton">
                 <Setter Property="Template">
                     <Setter.Value>

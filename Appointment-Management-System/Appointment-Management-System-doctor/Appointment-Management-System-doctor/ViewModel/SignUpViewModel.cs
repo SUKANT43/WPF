@@ -1,6 +1,7 @@
 ﻿using Appointment_Management_System_doctor.Base;
 using Appointment_Management_System_doctor.Handler;
 using Appointment_Management_System_doctor.Model;
+using Appointment_Management_System_doctor.View;
 using DatabaseLibrary;
 using GoLibrary;
 using System;
@@ -117,7 +118,7 @@ namespace Appointment_Management_System_doctor.ViewModel
             }
 
             BooleanMsg<object> isContains =
-                DBHandler.IsContains("Users", "Email", $"Email='{Email}'");
+                DBHandler.GetSingleData("Users", "Email", $"Email='{Email}'");
 
             if (isContains.Value!=null&&isContains.Value.ToString()==Email)
             {
@@ -132,8 +133,11 @@ namespace Appointment_Management_System_doctor.ViewModel
                 new ParameterData("Password",$"{hashedPassword}"),
 
             });
-            Message = "Account created successfully.";
+            ((MainWindow)Application.Current.MainWindow)
+            .GlobalNotification
+            .ShowNotification("Account created successfully.");
             _mainWindowViewModel.CurrentView = new LoginViewModel(_mainWindowViewModel);
+
         }
 
     }
