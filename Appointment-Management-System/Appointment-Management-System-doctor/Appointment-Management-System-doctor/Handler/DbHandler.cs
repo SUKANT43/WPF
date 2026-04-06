@@ -85,6 +85,7 @@ namespace Appointment_Management_System_doctor.Handler
 
         //    BooleanMsg bm = DataBaseCommunicator.ExecuteQuery(query);
 
+
         //    if (!bm)
         //    {
         //        return new BooleanMsg(false) { Message = "Query not executed" };

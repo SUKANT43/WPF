@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Appointment_Management_System_doctor.ViewModel
 {
@@ -13,5 +14,7 @@ namespace Appointment_Management_System_doctor.ViewModel
         {
             _mainWindowViewModel = mainWindowViewModel;
         }
+
+
     }
 }

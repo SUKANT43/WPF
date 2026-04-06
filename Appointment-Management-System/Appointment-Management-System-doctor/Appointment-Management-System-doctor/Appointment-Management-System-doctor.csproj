@@ -88,6 +88,9 @@
     </ApplicationDefinition>
     <Compile Include="Base\Observable.cs" />
     <Compile Include="Base\RelayCommand.cs" />
+    <Compile Include="Components\TopBarComponent.xaml.cs">
+      <DependentUpon>TopBarComponent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Handler\DBHandler.cs" />
     <Compile Include="Handler\EmailHandler.cs" />
     <Compile Include="Handler\PasswordHandler.cs" />
@@ -108,6 +111,10 @@
     <Compile Include="View\TopNotificationView.xaml.cs">
       <DependentUpon>TopNotificationView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Components\TopBarComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

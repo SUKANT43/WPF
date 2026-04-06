@@ -135,6 +135,7 @@
                                 FontSize="16"
                                 BorderThickness="0"
                                 Style="{StaticResource RoundedButton}"/>
+
                         <StackPanel Margin="0,20,0,0"
             HorizontalAlignment="Center">
                             <TextBlock FontSize="14"
@@ -151,7 +152,7 @@
                         </StackPanel>
                     </StackPanel>
 
-                    
+
                 </Grid>
                 <StackPanel>
                 </StackPanel>
@@ -159,6 +160,6 @@
             </Grid>
         </Border>
     </Grid>
-    
+
 
 </UserControl>
